@@ -74,7 +74,11 @@ public class PessoaController : Controller
     [HttpPost]
     public ActionResult Pesquisa(string texto)
     {
-        return View(db.Pessoas.Where(x => x.Nome.Contains(texto)).OrderBy(x => x.Nome));
+        var resultado = db.Pessoas
+            .Where(x => x.Nome.Contais(texto) || x.Cpf.Contais(texto)).
+            .OrderBy(x => x.Nome)
+            .ToList(); // retorna resultado como uma lista
+        return View(resultado);
     }
 }
 
