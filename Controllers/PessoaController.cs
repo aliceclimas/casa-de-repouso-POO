@@ -25,46 +25,56 @@ public class PessoaController : Controller
     }
 
     [HttpPost]
-    public ActionResult Create(Book model)
+    public ActionResult Create(Pessoa model)
     {
-        db.Books.Add(model); // ~ INSERT INTO Books VALUES (mode.Title...)
+        db.Pessoas.Add(model); // ~ INSERT INTO Pessoas VALUES ()
         db.SaveChanges(); // commit
         return RedirectToAction("Read");
     }
 
+    // sem POST pois em exclusão a solicitação é do tipo GET
     public ActionResult Delete(int id){
 
-        // realizar a exclusão
-        var book = db.Books.Where(e => e.BookId == id).First(); // or single -> apenas para um valor // SELECT * FROM Books WHERE BookId = id
-        db.Books.Remove(book); // DELETE FROM Books WHERE BookId = id
-
-        // db.Entry<Book>(book).State = Microsoft.EntityFrameworkCore.EntityState.Deleted;
-        db.SaveChanges(); // salva as operações feitas // commit
-
-        // redirecionar para página de read novamente.
-        return RedirectToAction("Read");
+        var pessoa = db.Pessoas.Where(e => e.PessoaId == id).First();
+        return View(pessoa); // Retorna uma view de confirmação
     }
-    
+    // Método que confirma a exclusão com uma view e um segundo método que realiza a exclusão
+    [HttpPost]
+    public ActionResult ConfirmarDelete(int id){
+
+        var pessoa = db.Pessoa.Where(e => e.PessoaId == id).First();;
+        db.Pessoas.Remove(pessoa);
+        db.SaveChanges();
+        return RedirectToAction("Read");
+
+    }
+
     [HttpGet]
     public ActionResult Update(int id)
     {
-        Book book = db.Books.Single(e => e.BookId == id);
-        return View(book);
+        Pessoa pessoa = db.Pessoas.Single(e => e.PessoaId == id);
+        return View(pessoa);
     }
 
     [HttpPost]
     public ActionResult Update(int id,Pessoa model)
     {
         var pessoa = db.Pessoas.Single(e => e.PessoaId == id);
-
         pessoa.Nome = model.Nome;
         pessoa.Cpf = model.Cpf;
-        
-    
-
         db.SaveChanges();
-
         return RedirectToAction("Read");
+    }
+
+    [HttpGet]
+    public ActionResult Pesquisa()
+    {
+        return View();
+    }
+    [HttpPost]
+    public ActionResult Pesquisa(string texto)
+    {
+        return View(db.Pessoas.Where(x => x.Nome.Contains(texto)).OrderBy(x => x.Nome));
     }
 }
 
