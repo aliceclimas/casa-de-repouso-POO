@@ -5,9 +5,9 @@ namespace CasaRepousoWeb.Controllers;
 
 public class PessoaController : Controller
 {
-    private readonly BookDatabase db;
+    private readonly RepousoDatabase db;
 
-    public PessoaController(BookDatabase db) {
+    public PessoaController(RepousoDatabase db) {
         this.db = db;
     }
 
@@ -42,7 +42,7 @@ public class PessoaController : Controller
     [HttpPost]
     public ActionResult ConfirmarDelete(int id){
 
-        var pessoa = db.Pessoa.Where(e => e.PessoaId == id).First();;
+        var pessoa = db.Pessoas.Where(e => e.PessoaId == id).First();;
         db.Pessoas.Remove(pessoa);
         db.SaveChanges();
         return RedirectToAction("Read");
