@@ -5,9 +5,9 @@ namespace CasaRepousoWeb.Controllers;
 
 public class PessoaController : Controller
 {
-    private readonly RepousoDatabase db;
+    private readonly CasaRepousoDatabase db;
 
-    public PessoaController(RepousoDatabase db) {
+    public PessoaController(CasaRepousoDatabase db) {
         this.db = db;
     }
 
@@ -75,7 +75,7 @@ public class PessoaController : Controller
     public ActionResult Pesquisa(string texto)
     {
         var resultado = db.Pessoas
-            .Where(x => x.Nome.Contais(texto) || x.Cpf.Contais(texto)).
+            .Where(x => x.Nome.Contains(texto) || x.Cpf.Contains(texto))
             .OrderBy(x => x.Nome)
             .ToList(); // retorna resultado como uma lista
         return View(resultado);
