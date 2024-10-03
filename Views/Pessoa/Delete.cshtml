@@ -10,14 +10,18 @@
 </head>
 <body class="container">
     
-    <h2>Cadastro de pessoas</h2>
+    <h2>Você tem certeza que deseja excluir essa pessoa?</h2>
     
-    <form action="/pessoa/create" method="POST" class="col offset-md-2 col-8">
-        <input placeholder="Nome" name="Nome" class="form-control" /><br/>
-        <input placeholder="Cpf" name="Cpf" class="form-control" /><br/>
-        <button class="btn btn-primary">Salvar</button>
+    
+    <form action="/pessoa/confirmardelete/@Model.PessoaId" method="POST" class="col offset-md-2 col-8">
+        <div>
+        <p>Nome @Model.Nome</p>
+        <p>CPF @Model.Cpf</p>
+        </div>
+        <button class="btn btn-primary">Excluir</button>
         <a class="btn btn-outline-secondary" href="/pessoa/read">Voltar</a>
     </form>
 
 </body>
 </html>
+
