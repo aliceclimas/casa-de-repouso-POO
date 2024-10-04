@@ -7,6 +7,6 @@ public class CasaRepousoDatabase: DbContext{
      public CasaRepousoDatabase(DbContextOptions options) : base(options) {} // método construtor
 
     public DbSet<Pessoa> Pessoas { get; set; }   
-
     public DbSet<Ficha> Fichas { get; set; }
+    public DbSet<Ala> Alas { get; set; }
 }
