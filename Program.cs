@@ -9,8 +9,6 @@ builder.Services.AddDbContext<CasaRepousoDatabase>(options => options.UseInMemor
 
 var app = builder.Build(); // transforma o que foi definido anteriormente em uma aplicação real
 
-app.MapControllerRoute("default", "/{controller=Pessoa}/{action=Read}/{id?}"); // define a rota padrão
+app.MapControllerRoute("default", "/{controller=Ala}/{action=Read}/{id?}"); // define a rota padrão
 
 app.Run(); // roda a aplicação
-
-
