@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Administrador\\Documents\\GitHub\\casa-de-repouso-POO\\CasaRepousoWeb.csproj": {}
+    "c:\\Users\\Administrador\\Documents\\GitHub\\casa-de-repouso-POO\\CasaRepousoWeb.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Administrador\\Documents\\GitHub\\casa-de-repouso-POO\\CasaRepousoWeb.csproj": {
+    "c:\\Users\\Administrador\\Documents\\GitHub\\casa-de-repouso-POO\\CasaRepousoWeb.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Administrador\\Documents\\GitHub\\casa-de-repouso-POO\\CasaRepousoWeb.csproj",
+        "projectUniqueName": "c:\\Users\\Administrador\\Documents\\GitHub\\casa-de-repouso-POO\\CasaRepousoWeb.csproj",
         "projectName": "CasaRepousoWeb",
-        "projectPath": "C:\\Users\\Administrador\\Documents\\GitHub\\casa-de-repouso-POO\\CasaRepousoWeb.csproj",
+        "projectPath": "c:\\Users\\Administrador\\Documents\\GitHub\\casa-de-repouso-POO\\CasaRepousoWeb.csproj",
         "packagesPath": "C:\\Users\\Administrador\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Administrador\\Documents\\GitHub\\casa-de-repouso-POO\\obj\\",
+        "outputPath": "c:\\Users\\Administrador\\Documents\\GitHub\\casa-de-repouso-POO\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Administrador\\AppData\\Roaming\\NuGet\\NuGet.Config"
