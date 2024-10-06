@@ -1,4 +1,4 @@
-@model CasaRepousoWeb.Models.Ala
+@model CasaRepousoWeb.Models.Endereco
 
 <!DOCTYPE html>
 <html lang="en">
@@ -9,17 +9,21 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body class="container">
-    <h2>Alas</h2>
+    <h2>Endereços</h2>
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="/ala/read">Ala</a></li>
-            <li class="breadcrumb-item active" aria-current="page">Edite uma ala</li>
+            <li class="breadcrumb-item"><a href="/endereco/read">Endereço</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Editar endereço</li>
         </ol>
     </nav>
-    <form action="/ala/update/@Model.AlaId" method="POST" class="col offset-md-2 col-8">
-        <input placeholder="Nome da ala" name="Nome" class="form-control" value="@Model.Nome"/><br/>
+    <form action="/endereco/update/@Model.EnderecoId" method="POST" class="col offset-md-2 col-8">
+        <input placeholder="Rua" name="Rua" class="form-control" value="@Model.Rua"/><br/>
+        <input placeholder="Numero" name="Numero" class="form-control" value="@Model.Numero"/><br/>
+        <input placeholder="Bairro" name="Bairro" class="form-control" value="@Model.Bairro"/><br/>
+        <input placeholder="CEP" name="CEP" class="form-control" value="@Model.CEP"/><br/>
+        <input placeholder="Complemento" name="Complemento" class="form-control" value="@Model.Complemento"/><br/>
         <button class="btn btn-primary">Salvar</button>
-        <a class="btn btn-outline-secondary" href="/ala/read">Voltar</a>
+        <a class="btn btn-outline-secondary" href="/endereco/read">Voltar</a>
     </form>
 </body>
 </html>
