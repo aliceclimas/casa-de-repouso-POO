@@ -1,8 +1,14 @@
-# casa-de-repouso-POO
-Projeto interdisciplinar para a disciplina Programação Orientada a Objetos
+# Casa de Repouso 🏠
+Este projeto é uma aplicação web para ajudar casas de repouso a terem um gerenciamento mais eficiente. Suas principais funcionalidades são cadastro de moradores do local e suas alas, funcionários (continuar escrevendo)
 
+Projeto interdisciplinar desenvolvido para a disciplina Programação Orientada a Objetos.
 
-Atualizações que poderiam ser feitas
+## 💻 Requisitos
+- Autenticação, autorização e registro;
+- Cadastros básicos (CRUDs contendo relacionamentos de 1:1 e 1:N);
+- Relacionamento de N:N (formulários ou relatórios);
+- Pesquisas e filtros nos dados;
 
---Validação do CPF
---Deixar todos os campos obrigatórios antes de enviar para o banco sem dar erro]
+## ⚙️ Atualizações que poderiam ser feitas
+- Validação do CPF
+- Deixar todos os campos obrigatórios antes de enviar para o banco sem dar erro
