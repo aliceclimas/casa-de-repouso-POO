@@ -34,6 +34,22 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxhXFVwZGF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Administrador/Documents/GitHub/casa-de-repouso-POO/Views/Endereco/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW5kZXJlY29cQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Administrador/Documents/GitHub/casa-de-repouso-POO/Views/Endereco/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW5kZXJlY29cRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Administrador/Documents/GitHub/casa-de-repouso-POO/Views/Endereco/Read.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW5kZXJlY29cUmVhZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Administrador/Documents/GitHub/casa-de-repouso-POO/Views/Endereco/Update.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW5kZXJlY29cVXBkYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Administrador/Documents/GitHub/casa-de-repouso-POO/Views/Ficha/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRmljaGFcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
