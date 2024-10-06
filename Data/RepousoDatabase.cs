@@ -9,4 +9,5 @@ public class CasaRepousoDatabase: DbContext{
     public DbSet<Pessoa> Pessoas { get; set; }   
     public DbSet<Ficha> Fichas { get; set; }
     public DbSet<Ala> Alas { get; set; }
+    public DbSet<Endereco> Enderecos { get; set; }
 }
