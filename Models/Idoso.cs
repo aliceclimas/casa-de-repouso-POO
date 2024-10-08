@@ -3,6 +3,7 @@ namespace CasaRepousoWeb.Models;
 public class Idoso
 {
     public int IdosoId { get; set; }
+    public string? Nome { get; set; }
     public int PessoaId { get; set; }
     public DateTime dataNascimento { get; set; }
     public int AlaId { get; set; }

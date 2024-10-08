@@ -2,6 +2,7 @@ namespace CasaRepousoWeb.Models;
 
 public class Cuidadora
 {
+    public string? Nome { get; set; }
     public int CuidadoraId { get; set; }
     public string? Telefone { get; set; }
     public string? Turno { get; set; }

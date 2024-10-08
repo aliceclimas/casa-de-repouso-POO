@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Administrador\\Documents\\GitHub\\casa-de-repouso-POO\\CasaRepousoWeb.csproj": {}
+    "C:\\Users\\dvlop\\casa-de-repouso-POO\\CasaRepousoWeb.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Administrador\\Documents\\GitHub\\casa-de-repouso-POO\\CasaRepousoWeb.csproj": {
+    "C:\\Users\\dvlop\\casa-de-repouso-POO\\CasaRepousoWeb.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Administrador\\Documents\\GitHub\\casa-de-repouso-POO\\CasaRepousoWeb.csproj",
+        "projectUniqueName": "C:\\Users\\dvlop\\casa-de-repouso-POO\\CasaRepousoWeb.csproj",
         "projectName": "CasaRepousoWeb",
-        "projectPath": "C:\\Users\\Administrador\\Documents\\GitHub\\casa-de-repouso-POO\\CasaRepousoWeb.csproj",
-        "packagesPath": "C:\\Users\\Administrador\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Administrador\\Documents\\GitHub\\casa-de-repouso-POO\\obj\\",
+        "projectPath": "C:\\Users\\dvlop\\casa-de-repouso-POO\\CasaRepousoWeb.csproj",
+        "packagesPath": "C:\\Users\\dvlop\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\dvlop\\casa-de-repouso-POO\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Administrador\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\dvlop\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -81,7 +81,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.402/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

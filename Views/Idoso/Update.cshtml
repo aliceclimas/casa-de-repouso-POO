@@ -1,0 +1,36 @@
+@model CasaRepousoWeb.Models.Idoso
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Idoso</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body class="container">
+
+    <h2>Idoso</h2>
+
+
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/book/read">Idoso</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Atualizar Idoso</li>
+        </ol>
+    </nav>
+
+    <form action="/idoso/update/@Model.IdosoId" method="POST" class="col offset-md-2 col-8">
+        <input placeholder="Nome" name="Nome" class="form-control" value="@Model.Nome"/><br/>
+        <input placeholder="Data de Nascimento" name="dataNascimento" class="form-control" value="@Model.dataNascimento"/><br/>
+        <input placeholder="Problemas de Saúde" name="ProblemasDeSaude" class="form-control" value="@Model.ProblemasDeSaude"/><br/>
+        <input placeholder="Alimentação" name="Nutricao" class="form-control" value="@Model.Nutricao"/><br/>
+        <input placeholder="Alergias" name="Alergia" class="form-control" value="@Model.Alergia"/><br/>
+        <input placeholder="Cuidados Especiais" name="CuidadosEspeciais" class="form-control" value="@Model.CuidadosEspeciais"/><br/>
+        <button class="btn btn-primary">Salvar</button>
+        <a class="btn btn-outline-secondary" href="/pessoa/read">Voltar</a>
+    </form>
+</body>
+</html>
