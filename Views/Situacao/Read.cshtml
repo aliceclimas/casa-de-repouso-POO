@@ -1,0 +1,60 @@
+@model IEnumerable<CasaRepousoWeb.Models.Situacao>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualização de Situações</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .table-no-borders th, .table-no-borders td {
+            border: none;
+        }
+        .circle {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Situações</h2>
+        <table class="table table-no-borders">
+            <thead>
+                <tr>
+                    <th>Cor</th>
+                    <th>Nome</th>
+                    <th>Descrição</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var situacao in Model)
+                {
+                    <tr>
+                        <td>
+                            <div class="circle" style="background-color: @situacao.Cor;"></div>
+                        </td>
+                        <td>@situacao.Nome</td>
+                        <td>@situacao.Descricao</td>
+                        <td>
+                            <a href="/situacao/update/@situacao.SituacaoId" class="btn btn-sm btn-outline-success"><i class="bi-pencil-square"></i> Editar</a>
+                            <a href="/situacao/delete/@situacao.SituacaoId" class="btn btn-sm btn-outline-danger"><i class="bi-trash"></i> Deletar</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div>
+            <a href="/Cuidadora/Login" class="btn btn-secondary">Voltar</a>
+            <a href="@Url.Action("Create", "Situacao")" class="btn btn-primary">Nova Situação</a>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+@model CasaRepousoWeb.Models.Situacao
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Nova Situação</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Criar Nova Situação</h2>
+        <form action="/situacao/Create" method="post">
+            @Html.AntiForgeryToken()
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" class="form-control" placeholder="nome" name="Nome" required>
+            </div>
+            <div class="form-group">
+                <label for="descricao">Descrição</label>
+                <textarea class="form-control" placeholder="descricao" name="Descricao" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="cor">Cor</label>
+                <select class="form-control" placeholder="cor" name="Cor" required>
+                    <option value="" disabled selected>Selecione uma cor</option>
+                    <option value="green">Verde</option>
+                    <option value="red">Vermelho</option>
+                    <option value="blue">Azul</option>
+                    <option value="yellow">Amarelo</option>
+                    <option value="orange">Laranja</option>
+                    <option value="purple">Roxo</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-success">Cadastrar</button>
+            <a href="/situacao/read" class="btn btn-secondary">Voltar</a>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
