@@ -1,4 +1,7 @@
-using Microsoft.AspNetCore.Mvc;
+using CasaRepousoWeb.Models; 
+using Microsoft.AspNetCore.Mvc; 
+using Microsoft.EntityFrameworkCore;
+using CasaRepousoWeb.Data;
 using CasaRepousoWeb.Models;
 
 namespace CasaRepousoWeb.Controllers;
@@ -59,7 +62,7 @@ public class MedicacaoController : Controller
     [HttpPost]
     public ActionResult Update(int id,Medicacao model)
     {
-        var medicacao = db.Medicacoes.Single(e => e.MedicaoId == id);
+        var medicacao = db.Medicacoes.Single(e => e.MedicacaoId == id);
         medicacao.IdosoId = model.IdosoId;
         medicacao.NomeMedicamento = model.NomeMedicamento;
         medicacao.Descricao = model.Descricao;
@@ -76,9 +79,9 @@ public class MedicacaoController : Controller
     [HttpPost]
     public ActionResult Pesquisa(string texto)
     {
-        var resultado = db.Medicacao
+        var resultado = db.Medicacoes
             .Where(x => x.NomeMedicamento.Contains(texto) || x.Descricao.Contains(texto))
-            .OrderBy(x => x.Nome)
+            .OrderBy(x => x.NomeMedicamento)
             .ToList(); // retorna resultado como uma lista
         return View(resultado);
     }
