@@ -12,3 +12,7 @@ Projeto interdisciplinar desenvolvido para a disciplina Programação Orientada 
 ## ⚙️ Atualizações que poderiam ser feitas
 - Validação do CPF
 - Deixar todos os campos obrigatórios antes de enviar para o banco sem dar erro
+
+
+dotnet ef migrations add InitialCreate
+dotnet ef database update
