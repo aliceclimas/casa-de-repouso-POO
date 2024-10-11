@@ -10,6 +10,10 @@ public class CasaRepousoDatabase : DbContext
 
     public DbSet<Cuidadora> Cuidadoras { get; set; }
     public DbSet<Situacao> Situacoes { get; set; }
-    // Adicione outros DbSets conforme necessário
+    public DbSet<Ala> Alas { get; set; }
+    public DbSet<Responsavel> Responsavels { get; set; }
+    public DbSet<Endereco> Enderecos { get; set; }
+    public DbSet<Idoso> Idosos { get; set; }
+    public DbSet<Medicacao> Medicacoes { get; set; }
 }
 

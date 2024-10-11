@@ -1,0 +1,184 @@
+@using CasaRepousoWeb.Models
+@using Microsoft.AspNetCore.Mvc.Rendering
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Navegação - Idosos</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* Seus estilos personalizados aqui */
+        .navbar {
+            background-color: #007bff;
+        }
+        .navbar-nav .nav-link {
+            color: white !important;
+        }
+        .navbar-nav .nav-link:hover {
+            color: #ddd !important;
+        }
+        .search-bar {
+            margin-bottom: 20px;
+        }
+        .search-bar input, .search-bar select {
+            margin-right: 10px;
+        }
+        .idoso-card {
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 10px;
+        }
+        .idoso-info {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .idoso-circle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: #28a745;
+            display: inline-block;
+        }
+        .idoso-details {
+            display: none;
+            padding-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container">
+            <a class="navbar-brand" href="#">Idoso</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/situacao/read">Situações</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/ala/read">Alas</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" data-toggle="modal" data-target="#cadastrarModal">Cadastrar</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/perfil">
+                            <i class="fas fa-user"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Modal de Cadastrar -->
+    <div class="modal fade" id="cadastrarModal" tabindex="-1" aria-labelledby="cadastrarModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cadastrarModalLabel">Cadastrar</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <h6>Escolha uma opção:</h6>
+                    <a href="/idoso/create" class="btn btn-secondary">Idoso</a>
+                    <a href="/cuidadora/create" class="btn btn-secondary">Cuidadora</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Conteúdo principal da página -->
+    <div class="container mt-5">
+        <form method="get" action="/idoso/read">
+            <div class="search-bar">
+                <input type="text" class="form-control d-inline-block" placeholder="Buscar por nome" name="nome" style="width: 200px;">            
+                <select name="ala" class="form-control d-inline-block" style="width: 150px;">
+                    <option value="">Filtrar por Ala</option>
+                    @if (ViewBag.Alas != null && ((IEnumerable<CasaRepousoWeb.Models.Ala>)ViewBag.Alas).Any()) 
+                    {
+                        foreach (var ala in ViewBag.Alas)
+                        {
+                            <option value="@ala.AlaId">@ala.Nome</option> <!-- Use AlaId aqui -->
+                        }
+                    }
+                    else
+                    {
+                        <option value="">Nenhuma ala encontrada</option> 
+                    }
+                </select>
+                <select name="situacao" class="form-control d-inline-block" style="width: 150px;">
+                    <option value="">Filtrar por Situação</option>
+                    @if (ViewBag.Situacoes != null && ((IEnumerable<CasaRepousoWeb.Models.Situacao>)ViewBag.Situacoes).Any())
+                    {
+                        foreach (var situacao in ViewBag.Situacoes)
+                        {
+                            <option value="@situacao.SituacaoId">@situacao.Nome</option> <!-- Use SituacaoId aqui -->
+                        }
+                    }
+                    else
+                    {
+                        <option value="">Nenhuma situação encontrada</option> 
+                    }
+                </select>
+                <button type="submit" class="btn btn-primary">Buscar</button>
+                <a href="/idoso/read" class="btn btn-secondary">Limpar Filtros</a> <!-- Botão para limpar os filtros -->
+            </div>
+        </form>
+
+        <!-- Listagem dos idosos -->
+        @if (ViewBag.Idosos != null && ((IEnumerable<dynamic>)ViewBag.Idosos).Any())
+        {
+            @foreach (var item in ViewBag.Idosos)
+            {
+                <div class="idoso-card">
+                    <div class="idoso-info">
+                        <div>
+                            <span class="idoso-circle" style="background-color: @item.Idoso.Situacao.Cor;"></span>
+                            @item.Idoso.Nome - @item.Idade anos - @item.Idoso.Ala.Nome
+                        </div>
+                        <div>
+                            <a href="/idoso/update/@item.Idoso.IdosoId" class="btn btn-sm btn-warning">Editar</a>
+                            <a href="/idoso/delete/@item.Idoso.IdosoId" class="btn btn-sm btn-danger">Excluir</a>
+                            <button class="btn btn-sm btn-info" onclick="toggleDetails(this)">Mais detalhes</button>
+                        </div>
+                    </div>
+                    <div class="idoso-details">
+                        <p><strong>Problemas de saúde:</strong> @item.Idoso.ProblemasDeSaude</p>
+                        <p><strong>Nutrição:</strong> @item.Idoso.Nutricao</p>
+                        <p><strong>Alergia:</strong> @item.Idoso.Alergia</p>
+                        <p><strong>Cuidados Especiais:</strong> @item.Idoso.CuidadosEspeciais</p>
+                        <div>
+                            <a href="/medicacao/read/@item.Idoso.IdosoId" class="btn btn-outline-primary btn-sm">Medicações</a>
+                            <button class="btn btn-outline-secondary btn-sm">Relatórios</button>
+                            <button class="btn btn-outline-success btn-sm">Responsáveis</button>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <p>Nenhum idoso encontrado.</p>
+        } 
+
+    <script>
+        function toggleDetails(button) {
+            const details = button.closest('.idoso-card').querySelector('.idoso-details');
+            details.style.display = details.style.display === 'none' || details.style.display === '' ? 'block' : 'none';
+        }
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,38 @@
+@model CasaRepousoWeb.Models.Medicacao
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Medicação</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Criar Nova Medicação</h2>
+        <form asp-action="Create" method="post">
+            <input type="hidden" name="IdosoId" value="@ViewBag.IdosoId" />
+            <div class="form-group">
+                <label for="NomeMedicamento">Nome do Medicamento</label>
+                <input type="text" class="form-control" id="NomeMedicamento" name="NomeMedicamento" required />
+            </div>
+            <div class="form-group">
+                <label for="Dosagem">Dosagem</label>
+                <input type="text" class="form-control" id="Dosagem" name="Dosagem"  />
+            </div>
+            <div class="form-group">
+                <label for="Dosagem">Descricao</label>
+                <input type="text" class="form-control" id="Descricao" name="Descricao"  />
+            </div>
+            <div class="form-group">
+                <label for="Horario">Horário</label>
+                <input type="time" class="form-control" id="Horario" name="Horario"  />
+            </div>
+            <button type="submit" class="btn btn-primary">Salvar</button>
+            <a href="/medicacao/read/@ViewBag.IdosoId" class="btn btn-secondary">Voltar</a>
+        </form>
+    </div>
+</body>
+</html>

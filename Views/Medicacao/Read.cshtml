@@ -1,0 +1,63 @@
+@model IEnumerable<CasaRepousoWeb.Models.Medicacao>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualização de Medicações</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .table-no-borders th, .table-no-borders td {
+            border: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Medicações</h2>
+        <table class="table table-no-borders">
+            <thead>
+                <tr>
+                    <th>Nome do Medicamento</th>
+                    <th>Dosagem</th>
+                    <th>Horário</th>
+                    <th>Descrição</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Any())
+                {
+                    foreach (var medicacao in Model)
+                    {
+                        <tr>
+                            <td>@medicacao.NomeMedicamento</td>
+                            <td>@medicacao.Dosagem</td>
+                            <td>@medicacao.Horario?.ToString("HH:mm")</td>
+                            <td>@medicacao.Descricao</td>
+                            <td>
+                                <a href="/medicacao/update/@medicacao.MedicacaoId" class="btn btn-sm btn-outline-success">Editar</a>
+                                <a href="/medicacao/delete/@medicacao.MedicacaoId" class="btn btn-sm btn-outline-danger">Deletar</a>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="4" class="text-center">Nenhuma medicação encontrada para este idoso.</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div>
+            <a href="/idoso/read" class="btn btn-secondary">Voltar</a>
+            <a href="/medicacao/create/@ViewBag.IdosoId" class="btn btn-primary">Nova Medicação</a>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -3,8 +3,10 @@ namespace CasaRepousoWeb.Models;
 public class Idoso
 {
     public int IdosoId { get; set; }
-    public int PessoaId { get; set; }
-    public DateTime dataNascimento { get; set; }
+    public string Nome { get; set; }
+    public string Sobrenome { get; set; }
+    public string CPF { get; set; }
+    public DateTime DataNascimento { get; set; }
     public int AlaId { get; set; }
     public int SituacaoId { get; set; }
     public string? ProblemasDeSaude { get; set; }
@@ -13,7 +15,6 @@ public class Idoso
     public string? CuidadosEspeciais { get; set; }
 
     // Relacionamentos
-    public Pessoa Pessoa { get; set; }
     public Ala Ala { get; set; }
     public Situacao Situacao { get; set; }
     public ICollection<Relatorio> Relatorios { get; set; }

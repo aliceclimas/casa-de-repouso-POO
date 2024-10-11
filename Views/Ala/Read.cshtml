@@ -1,4 +1,4 @@
-@model IEnumerable<CasaRepousoWeb.Models.Situacao>
+@model IEnumerable<CasaRepousoWeb.Models.Ala>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -21,28 +21,24 @@
 </head>
 <body>
     <div class="container mt-5">
-        <h2>Situações</h2>
+        <h2>Alas</h2>
         <table class="table table-no-borders">
             <thead>
                 <tr>
-                    <th>Cor</th>
                     <th>Nome</th>
                     <th>Descrição</th>
                     <th>Ações</th>
                 </tr>
             </thead>
             <tbody>
-                @foreach (var situacao in Model)
+                @foreach (var ala in Model)
                 {
                     <tr>
+                        <td>@ala.Nome</td>
+                        <td>@ala.Descricao</td>
                         <td>
-                            <div class="circle" style="background-color: @situacao.Cor;"></div>
-                        </td>
-                        <td>@situacao.Nome</td>
-                        <td>@situacao.Descricao</td>
-                        <td>
-                            <a href="/situacao/update/@situacao.SituacaoId" class="btn btn-sm btn-outline-success"><i class="bi-pencil-square"></i> Editar</a>
-                            <a href="/situacao/delete/@situacao.SituacaoId" class="btn btn-sm btn-outline-danger"><i class="bi-trash"></i> Deletar</a>
+                            <a href="/ala/update/@ala.AlaId" class="btn btn-sm btn-outline-success"><i class="bi-pencil-square"></i> Editar</a>
+                            <a href="/ala/delete/@ala.AlaId" class="btn btn-sm btn-outline-danger"><i class="bi-trash"></i> Deletar</a>
                         </td>
                     </tr>
                 }
@@ -50,7 +46,7 @@
         </table>
         <div>
             <a href="/idoso/read" class="btn btn-secondary">Voltar</a>
-            <a href="/situacao/Create" class="btn btn-primary">  Situação</a>
+            <a href="/ala/create" class="btn btn-primary">Nova Situação</a>
         </div>
     </div>
 

@@ -6,7 +6,7 @@ namespace CasaRepousoWeb.Controllers;
 public class CuidadoraController : Controller
 {
     public IActionResult Login()
-        {
-            return View();
-        }
+    {
+        return View();
+    }
 }
