@@ -1,0 +1,62 @@
+@model IEnumerable<CasaRepousoWeb.Models.Responsavel>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsáveis do Idoso</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Responsáveis do Idoso</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Sobrenome</th>
+                    <th>CPF</th>
+                    <th>Telefone</th>
+                    <th>Email</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Any())
+                {
+                    foreach (var responsavel in Model)
+                    {
+                        <tr>
+                            <td>@responsavel.Nome</td>
+                            <td>@responsavel.Sobrenome</td>
+                            <td>@responsavel.CPF</td>
+                            <td>@responsavel.Telefone</td>
+                            <td>@responsavel.Email</td>
+                            <td>
+                                <!-- Botões de Ações (Editar e Excluir) -->
+                                <a href="/responsavel/update/@responsavel.ResponsavelId" class="btn btn-sm btn-outline-success">Editar</a>
+                                <a href="/responsavel/delete/@responsavel.ResponsavelId" class="btn btn-sm btn-outline-danger">Excluir</a>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="6" class="text-center">Nenhum responsável encontrado para este idoso.</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div>
+            <!-- Botão para cadastrar um novo responsável e voltar -->
+            <a href="/responsavel/create/@ViewBag.IdosoId" class="btn btn-primary">Novo Responsável</a>
+            <a href="/idoso/read" class="btn btn-secondary">Voltar</a>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -16,3 +16,8 @@ Projeto interdisciplinar desenvolvido para a disciplina Programação Orientada 
 
 dotnet ef migrations add InitialCreate
 dotnet ef database update
+
+
+
+
+

@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CasaRepousoWeb.Migrations
 {
     [DbContext(typeof(CasaRepousoDatabase))]
-    [Migration("20241010141156_InitialCreate")]
+    [Migration("20241012173027_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -102,15 +102,24 @@ namespace CasaRepousoWeb.Migrations
                     b.Property<string>("Complemento")
                         .HasColumnType("TEXT");
 
+                    b.Property<string>("Descricao")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
                     b.Property<string>("NumeroCasa")
                         .IsRequired()
                         .HasColumnType("TEXT");
+
+                    b.Property<int>("ResponsavelId")
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Rua")
                         .IsRequired()
                         .HasColumnType("TEXT");
 
                     b.HasKey("EnderecoId");
+
+                    b.HasIndex("ResponsavelId");
 
                     b.ToTable("Enderecos");
                 });
@@ -236,9 +245,6 @@ namespace CasaRepousoWeb.Migrations
                     b.Property<string>("Email")
                         .HasColumnType("TEXT");
 
-                    b.Property<int>("EnderecoId")
-                        .HasColumnType("INTEGER");
-
                     b.Property<int>("IdosoId")
                         .HasColumnType("INTEGER");
 
@@ -256,11 +262,9 @@ namespace CasaRepousoWeb.Migrations
 
                     b.HasKey("ResponsavelId");
 
-                    b.HasIndex("EnderecoId");
-
                     b.HasIndex("IdosoId");
 
-                    b.ToTable("Responsavels");
+                    b.ToTable("Responsaveis");
                 });
 
             modelBuilder.Entity("CasaRepousoWeb.Models.Situacao", b =>
@@ -295,7 +299,7 @@ namespace CasaRepousoWeb.Migrations
                         .IsRequired();
 
                     b.HasOne("CasaRepousoWeb.Models.Endereco", "Endereco")
-                        .WithMany("Cuidadoras")
+                        .WithMany()
                         .HasForeignKey("EnderecoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -303,6 +307,17 @@ namespace CasaRepousoWeb.Migrations
                     b.Navigation("Ala");
 
                     b.Navigation("Endereco");
+                });
+
+            modelBuilder.Entity("CasaRepousoWeb.Models.Endereco", b =>
+                {
+                    b.HasOne("CasaRepousoWeb.Models.Responsavel", "Responsavel")
+                        .WithMany("Enderecos")
+                        .HasForeignKey("ResponsavelId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Responsavel");
                 });
 
             modelBuilder.Entity("CasaRepousoWeb.Models.Idoso", b =>
@@ -356,19 +371,11 @@ namespace CasaRepousoWeb.Migrations
 
             modelBuilder.Entity("CasaRepousoWeb.Models.Responsavel", b =>
                 {
-                    b.HasOne("CasaRepousoWeb.Models.Endereco", "Endereco")
-                        .WithMany("Responsaveis")
-                        .HasForeignKey("EnderecoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.HasOne("CasaRepousoWeb.Models.Idoso", "Idoso")
                         .WithMany()
                         .HasForeignKey("IdosoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Endereco");
 
                     b.Navigation("Idoso");
                 });
@@ -385,18 +392,16 @@ namespace CasaRepousoWeb.Migrations
                     b.Navigation("Relatorios");
                 });
 
-            modelBuilder.Entity("CasaRepousoWeb.Models.Endereco", b =>
-                {
-                    b.Navigation("Cuidadoras");
-
-                    b.Navigation("Responsaveis");
-                });
-
             modelBuilder.Entity("CasaRepousoWeb.Models.Idoso", b =>
                 {
                     b.Navigation("Medicacoes");
 
                     b.Navigation("Relatorios");
+                });
+
+            modelBuilder.Entity("CasaRepousoWeb.Models.Responsavel", b =>
+                {
+                    b.Navigation("Enderecos");
                 });
 
             modelBuilder.Entity("CasaRepousoWeb.Models.Situacao", b =>

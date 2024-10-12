@@ -26,23 +26,6 @@ namespace CasaRepousoWeb.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Enderecos",
-                columns: table => new
-                {
-                    EnderecoId = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Rua = table.Column<string>(type: "TEXT", nullable: false),
-                    NumeroCasa = table.Column<string>(type: "TEXT", nullable: false),
-                    Bairro = table.Column<string>(type: "TEXT", nullable: false),
-                    CEP = table.Column<string>(type: "TEXT", nullable: false),
-                    Complemento = table.Column<string>(type: "TEXT", nullable: true)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Enderecos", x => x.EnderecoId);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "Situacoes",
                 columns: table => new
                 {
@@ -55,39 +38,6 @@ namespace CasaRepousoWeb.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Situacoes", x => x.SituacaoId);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Cuidadoras",
-                columns: table => new
-                {
-                    CuidadoraId = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Nome = table.Column<string>(type: "TEXT", nullable: false),
-                    Sobrenome = table.Column<string>(type: "TEXT", nullable: false),
-                    CPF = table.Column<string>(type: "TEXT", nullable: false),
-                    Telefone = table.Column<string>(type: "TEXT", nullable: true),
-                    Turno = table.Column<string>(type: "TEXT", nullable: true),
-                    Email = table.Column<string>(type: "TEXT", nullable: false),
-                    EnderecoId = table.Column<int>(type: "INTEGER", nullable: false),
-                    senha = table.Column<string>(type: "TEXT", nullable: false),
-                    AlaId = table.Column<int>(type: "INTEGER", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Cuidadoras", x => x.CuidadoraId);
-                    table.ForeignKey(
-                        name: "FK_Cuidadoras_Alas_AlaId",
-                        column: x => x.AlaId,
-                        principalTable: "Alas",
-                        principalColumn: "AlaId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Cuidadoras_Enderecos_EnderecoId",
-                        column: x => x.EnderecoId,
-                        principalTable: "Enderecos",
-                        principalColumn: "EnderecoId",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -148,6 +98,88 @@ namespace CasaRepousoWeb.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Responsaveis",
+                columns: table => new
+                {
+                    ResponsavelId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Nome = table.Column<string>(type: "TEXT", nullable: false),
+                    Sobrenome = table.Column<string>(type: "TEXT", nullable: false),
+                    CPF = table.Column<string>(type: "TEXT", nullable: false),
+                    Telefone = table.Column<string>(type: "TEXT", nullable: false),
+                    Email = table.Column<string>(type: "TEXT", nullable: true),
+                    IdosoId = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Responsaveis", x => x.ResponsavelId);
+                    table.ForeignKey(
+                        name: "FK_Responsaveis_Idosos_IdosoId",
+                        column: x => x.IdosoId,
+                        principalTable: "Idosos",
+                        principalColumn: "IdosoId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Enderecos",
+                columns: table => new
+                {
+                    EnderecoId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Descricao = table.Column<string>(type: "TEXT", nullable: false),
+                    Rua = table.Column<string>(type: "TEXT", nullable: false),
+                    NumeroCasa = table.Column<string>(type: "TEXT", nullable: false),
+                    Bairro = table.Column<string>(type: "TEXT", nullable: false),
+                    CEP = table.Column<string>(type: "TEXT", nullable: false),
+                    Complemento = table.Column<string>(type: "TEXT", nullable: true),
+                    ResponsavelId = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Enderecos", x => x.EnderecoId);
+                    table.ForeignKey(
+                        name: "FK_Enderecos_Responsaveis_ResponsavelId",
+                        column: x => x.ResponsavelId,
+                        principalTable: "Responsaveis",
+                        principalColumn: "ResponsavelId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Cuidadoras",
+                columns: table => new
+                {
+                    CuidadoraId = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    Nome = table.Column<string>(type: "TEXT", nullable: false),
+                    Sobrenome = table.Column<string>(type: "TEXT", nullable: false),
+                    CPF = table.Column<string>(type: "TEXT", nullable: false),
+                    Telefone = table.Column<string>(type: "TEXT", nullable: true),
+                    Turno = table.Column<string>(type: "TEXT", nullable: true),
+                    Email = table.Column<string>(type: "TEXT", nullable: false),
+                    EnderecoId = table.Column<int>(type: "INTEGER", nullable: false),
+                    senha = table.Column<string>(type: "TEXT", nullable: false),
+                    AlaId = table.Column<int>(type: "INTEGER", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Cuidadoras", x => x.CuidadoraId);
+                    table.ForeignKey(
+                        name: "FK_Cuidadoras_Alas_AlaId",
+                        column: x => x.AlaId,
+                        principalTable: "Alas",
+                        principalColumn: "AlaId",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Cuidadoras_Enderecos_EnderecoId",
+                        column: x => x.EnderecoId,
+                        principalTable: "Enderecos",
+                        principalColumn: "EnderecoId",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "Relatorio",
                 columns: table => new
                 {
@@ -176,37 +208,6 @@ namespace CasaRepousoWeb.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.CreateTable(
-                name: "Responsavels",
-                columns: table => new
-                {
-                    ResponsavelId = table.Column<int>(type: "INTEGER", nullable: false)
-                        .Annotation("Sqlite:Autoincrement", true),
-                    Nome = table.Column<string>(type: "TEXT", nullable: false),
-                    Sobrenome = table.Column<string>(type: "TEXT", nullable: false),
-                    CPF = table.Column<string>(type: "TEXT", nullable: false),
-                    Telefone = table.Column<string>(type: "TEXT", nullable: false),
-                    Email = table.Column<string>(type: "TEXT", nullable: true),
-                    EnderecoId = table.Column<int>(type: "INTEGER", nullable: false),
-                    IdosoId = table.Column<int>(type: "INTEGER", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Responsavels", x => x.ResponsavelId);
-                    table.ForeignKey(
-                        name: "FK_Responsavels_Enderecos_EnderecoId",
-                        column: x => x.EnderecoId,
-                        principalTable: "Enderecos",
-                        principalColumn: "EnderecoId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_Responsavels_Idosos_IdosoId",
-                        column: x => x.IdosoId,
-                        principalTable: "Idosos",
-                        principalColumn: "IdosoId",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
             migrationBuilder.CreateIndex(
                 name: "IX_Cuidadoras_AlaId",
                 table: "Cuidadoras",
@@ -216,6 +217,11 @@ namespace CasaRepousoWeb.Migrations
                 name: "IX_Cuidadoras_EnderecoId",
                 table: "Cuidadoras",
                 column: "EnderecoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Enderecos_ResponsavelId",
+                table: "Enderecos",
+                column: "ResponsavelId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Idosos_AlaId",
@@ -243,13 +249,8 @@ namespace CasaRepousoWeb.Migrations
                 column: "IdosoId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Responsavels_EnderecoId",
-                table: "Responsavels",
-                column: "EnderecoId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Responsavels_IdosoId",
-                table: "Responsavels",
+                name: "IX_Responsaveis_IdosoId",
+                table: "Responsaveis",
                 column: "IdosoId");
         }
 
@@ -263,16 +264,16 @@ namespace CasaRepousoWeb.Migrations
                 name: "Relatorio");
 
             migrationBuilder.DropTable(
-                name: "Responsavels");
-
-            migrationBuilder.DropTable(
                 name: "Cuidadoras");
 
             migrationBuilder.DropTable(
-                name: "Idosos");
+                name: "Enderecos");
 
             migrationBuilder.DropTable(
-                name: "Enderecos");
+                name: "Responsaveis");
+
+            migrationBuilder.DropTable(
+                name: "Idosos");
 
             migrationBuilder.DropTable(
                 name: "Alas");

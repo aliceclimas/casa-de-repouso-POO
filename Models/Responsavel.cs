@@ -8,10 +8,11 @@ public class Responsavel
     public string CPF { get; set; }
     public string Telefone { get; set; }
     public string? Email { get; set; }
-    public int EnderecoId { get; set; }
     public int IdosoId { get; set; }
 
     // Relacionamentos
-    public Endereco Endereco { get; set; }
     public Idoso Idoso { get; set; }
+
+    // Um responsável pode ter vários endereços
+    public ICollection<Endereco> Enderecos { get; set; }
 }

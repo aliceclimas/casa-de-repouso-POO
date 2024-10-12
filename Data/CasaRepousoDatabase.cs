@@ -11,7 +11,7 @@ public class CasaRepousoDatabase : DbContext
     public DbSet<Cuidadora> Cuidadoras { get; set; }
     public DbSet<Situacao> Situacoes { get; set; }
     public DbSet<Ala> Alas { get; set; }
-    public DbSet<Responsavel> Responsavels { get; set; }
+    public DbSet<Responsavel> Responsaveis { get; set; }
     public DbSet<Endereco> Enderecos { get; set; }
     public DbSet<Idoso> Idosos { get; set; }
     public DbSet<Medicacao> Medicacoes { get; set; }
