@@ -1,0 +1,46 @@
+@model CasaRepousoWeb.Models.Medicacao
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Medicação</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Criar Nova Medicação</h2>
+        <form asp-action="Create" method="post">
+            <input type="hidden" name="IdosoId" value="@ViewBag.ResponsavelId" />
+            <div class="form-group">
+                <label for="Descricao">Descrição</label>
+                <input type="text" class="form-control" id="Descricao" name="Descricao" required />
+            </div>
+            <div class="form-group">
+                <label for="Rua">Rua</label>
+                <input type="text" class="form-control" id="Rua" name="Rua"  />
+            </div>
+            <div class="form-group">
+                <label for="NumeroCasa">Numero da casa</label>
+                <input type="text" class="form-control" id="NumeroCasa" name="NumeroCasa"  />
+            </div>
+            <div class="form-group">
+                <label for="Bairro">Bairro</label>
+                <input type="text" class="form-control" id="Bairro" name="Bairro"  />
+            </div>
+            <div class="form-group">
+                <label for="CEP">CEP</label>
+                <input type="text" class="form-control" id="CEP" name="CEP"  />
+            </div>
+            <div class="form-group">
+                <label for="Complemento">Complemento</label>
+                <input type="text" class="form-control" id="Complemento" name="Complemento"  />
+            </div>
+            <button type="submit" class="btn btn-primary">Salvar</button>
+            <a href="/responsavel/read/@ViewBag.IdosoId" class="btn btn-outline-primary btn-sm">Voltar</a>
+        </form>
+    </div>
+</body>
+</html>

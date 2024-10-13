@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using CasaRepousoWeb.Models;
 using CasaRepousoWeb.Data;
 using CasaRepousoWeb.Services;
+using Microsoft.EntityFrameworkCore;
 
 namespace CasaRepousoWeb.Controllers;
 
@@ -17,8 +18,8 @@ public class ResponsavelController : Controller
     public IActionResult Read(int id)
     {
         ViewBag.IdosoId = id;
-        var responsaveis = db.Responsaveis.Where(e => e.IdosoId == id).ToList();
-        
+        // var responsaveis = db.Responsaveis.Where(e => e.IdosoId == id).ToList();
+        var responsaveis = db.Responsaveis.Include(r => r.Enderecos).Where(e => e.IdosoId == id).ToList();
         return View(responsaveis);
     }
 
@@ -52,7 +53,7 @@ public class ResponsavelController : Controller
     {
         db.Responsaveis.Update(responsavel);
         db.SaveChanges();
-        ViewBag.IdosoId = responsavel.IdosoId; 
+        ViewBag.IdosoId = responsavel.IdosoId;
         return RedirectToAction("Read", new { id = responsavel.IdosoId });
     }
 
