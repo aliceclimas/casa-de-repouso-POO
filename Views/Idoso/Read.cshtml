@@ -10,27 +10,44 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* Seus estilos personalizados aqui */
+        body {
+            background-color: #f8f9fa;
+        }
         .navbar {
             background-color: #007bff;
         }
+        .navbar-brand {
+            font-weight: bold;
+        }
         .navbar-nav .nav-link {
             color: white !important;
+            font-weight: 500;
         }
         .navbar-nav .nav-link:hover {
             color: #ddd !important;
         }
         .search-bar {
             margin-bottom: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         .search-bar input, .search-bar select {
             margin-right: 10px;
+            flex: 1;
+            min-width: 120px;
         }
         .idoso-card {
             border: 1px solid #ddd;
             border-radius: 5px;
             padding: 15px;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            background-color: white;
+            transition: transform 0.2s;
+        }
+        .idoso-card:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
         .idoso-info {
             display: flex;
@@ -41,19 +58,27 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background-color: #28a745;
             display: inline-block;
         }
         .idoso-details {
             display: none;
             padding-top: 10px;
+            border-top: 1px solid #ddd;
+            margin-top: 10px;
+        }
+        .btn-info {
+            background-color: #17a2b8;
+            border: none;
+        }
+        .btn-outline-primary {
+            margin-right: 5px;
         }
     </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
-            <a class="navbar-brand" href="#">Idoso</a>
+            <a class="navbar-brand" href="#">Casa Repouso</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -68,10 +93,22 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#" data-toggle="modal" data-target="#cadastrarModal">Cadastrar</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/perfil">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class="fas fa-user"></i>
                         </a>
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="/Read/Cuidadora">Ver Perfil</a>
+                            <div class="dropdown-divider"></div>
+                            @* <form id="logoutForm" asp-controller="Cuidadora" asp-action="Logout" method="post">
+                                @Html.AntiForgeryToken()
+                                <button type="submit" class="dropdown-item">Sair</button>
+                            </form> *@
+                            <form id="logoutForm" method="post" action="@Url.Action("Logout", "Cuidadora")">
+                                @Html.AntiForgeryToken()
+                                <input type="submit" value="Sair" class="dropdown-item" />
+                            </form>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -88,10 +125,10 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
+                <div class="modal-body text-center">
                     <h6>Escolha uma opção:</h6>
-                    <a href="/idoso/create" class="btn btn-secondary">Idoso</a>
-                    <a href="/cuidadora/create" class="btn btn-secondary">Cuidadora</a>
+                    <a href="/idoso/create" class="btn btn-secondary btn-lg m-1">Idoso</a>
+                    <a href="/cuidadora/create" class="btn btn-secondary btn-lg m-1">Cuidadora</a>
                 </div>
             </div>
         </div>
@@ -101,14 +138,14 @@
     <div class="container mt-5">
         <form method="get" action="/idoso/read">
             <div class="search-bar">
-                <input type="text" class="form-control d-inline-block" placeholder="Buscar por nome" name="nome" style="width: 200px;">            
-                <select name="ala" class="form-control d-inline-block" style="width: 150px;">
+                <input type="text" class="form-control" placeholder="Buscar por nome" name="nome">
+                <select name="ala" class="form-control">
                     <option value="">Filtrar por Ala</option>
                     @if (ViewBag.Alas != null && ((IEnumerable<CasaRepousoWeb.Models.Ala>)ViewBag.Alas).Any()) 
                     {
                         foreach (var ala in ViewBag.Alas)
                         {
-                            <option value="@ala.AlaId">@ala.Nome</option> <!-- Use AlaId aqui -->
+                            <option value="@ala.AlaId">@ala.Nome</option>
                         }
                     }
                     else
@@ -116,13 +153,13 @@
                         <option value="">Nenhuma ala encontrada</option> 
                     }
                 </select>
-                <select name="situacao" class="form-control d-inline-block" style="width: 150px;">
+                <select name="situacao" class="form-control">
                     <option value="">Filtrar por Situação</option>
                     @if (ViewBag.Situacoes != null && ((IEnumerable<CasaRepousoWeb.Models.Situacao>)ViewBag.Situacoes).Any())
                     {
                         foreach (var situacao in ViewBag.Situacoes)
                         {
-                            <option value="@situacao.SituacaoId">@situacao.Nome</option> <!-- Use SituacaoId aqui -->
+                            <option value="@situacao.SituacaoId">@situacao.Nome</option>
                         }
                     }
                     else
@@ -131,7 +168,7 @@
                     }
                 </select>
                 <button type="submit" class="btn btn-primary">Buscar</button>
-                <a href="/idoso/read" class="btn btn-secondary">Limpar Filtros</a> <!-- Botão para limpar os filtros -->
+                <a href="/idoso/read" class="btn btn-secondary">Limpar Filtros</a>
             </div>
         </form>
 
@@ -168,7 +205,7 @@
         }
         else
         {
-            <p>Nenhum idoso encontrado.</p>
+            <p class="text-center">Nenhum idoso encontrado.</p>
         } 
 
     <script>

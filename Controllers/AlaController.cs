@@ -2,9 +2,11 @@ using Microsoft.AspNetCore.Mvc;
 using CasaRepousoWeb.Models;
 using Microsoft.EntityFrameworkCore;
 using CasaRepousoWeb.Data;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CasaRepousoWeb.Controllers;
 
+[Authorize]
 public class AlaController : Controller 
 { 
     private readonly CasaRepousoDatabase db; 

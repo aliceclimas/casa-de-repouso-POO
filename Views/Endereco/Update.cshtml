@@ -11,32 +11,32 @@
 </head>
 <body>
     <div class="container mt-5">
-        <h2>Criar Novo Endereco</h2>
-        <form asp-action="Create" method="post">
+        <h2>Editar endereco</h2>
+        <form asp-action="Update" method="post">
             <input type="hidden" name="IdosoId" value="@ViewBag.ResponsavelId" />
             <div class="form-group">
                 <label for="Descricao">Descrição</label>
-                <input type="text" class="form-control" id="Descricao" name="Descricao" required />
+                <input type="text" class="form-control" id="Descricao" name="Descricao" required value="@Model.Descricao" >
             </div>
             <div class="form-group">
                 <label for="Rua">Rua</label>
-                <input type="text" class="form-control" id="Rua" name="Rua"  />
+                <input type="text" class="form-control" id="Rua" name="Rua"  value="@Model.Rua" >
             </div>
             <div class="form-group">
                 <label for="NumeroCasa">Numero da casa</label>
-                <input type="text" class="form-control" id="NumeroCasa" name="NumeroCasa"  />
+                <input type="text" class="form-control" id="NumeroCasa" name="NumeroCasa" value="@Model.NumeroCasa" >
             </div>
             <div class="form-group">
                 <label for="Bairro">Bairro</label>
-                <input type="text" class="form-control" id="Bairro" name="Bairro"  />
+                <input type="text" class="form-control" id="Bairro" name="Bairro" value="@Model.Bairro" >
             </div>
             <div class="form-group">
                 <label for="CEP">CEP</label>
-                <input type="text" class="form-control" id="CEP" name="CEP"  />
+                <input type="text" class="form-control" id="CEP" name="CEP" value="@Model.CEP" >
             </div>
             <div class="form-group">
                 <label for="Complemento">Complemento</label>
-                <input type="text" class="form-control" id="Complemento" name="Complemento"  />
+                <input type="text" class="form-control" id="Complemento" name="Complemento" value="@Model.Complemento" >
             </div>
             <button type="submit" class="btn btn-primary">Salvar</button>
             <a href="/responsavel/read/@ViewBag.IdosoId" class="btn btn-outline-primary btn-sm">Voltar</a>

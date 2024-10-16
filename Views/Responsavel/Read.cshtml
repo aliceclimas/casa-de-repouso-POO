@@ -17,7 +17,7 @@
 </head>
 <body>
     <div class="container mt-5">
-        <h2>Responsáveis do Idoso</h2>
+        <h2>Responsáveis do @ViewBag.Nome</h2>
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -59,11 +59,12 @@
                                             {
                                                 <span> - Complemento: @endereco.Complemento</span>
                                             }
+                                            <a href="/endereco/update/@endereco.EnderecoId" class="btn btn-sm btn-outline-warning">Editar Endereço</a>
+                                            <a href="/endereco/delete/@endereco.EnderecoId" class="btn btn-sm btn-outline-warning">Excluir</a>
                                         </li>
                                     }
                                 </ul>
-                                <!-- Botão para adicionar um novo endereço -->
-                                <a href="/endereco/create/@responsavel.ResponsavelId" class="btn btn-sm btn-primary">Adicionar Endereço</a>
+                                <a href="/endereco/create/@responsavel.ResponsavelId" class="btn btn-sm btn-outline-warning">Adicionar Endereço</a>
                             </td>
                         </tr>
                     }

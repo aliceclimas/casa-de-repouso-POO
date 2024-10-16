@@ -7,14 +7,13 @@ public class Cuidadora
     public string Sobrenome { get; set; }
     public string CPF { get; set; }
     public string? Telefone { get; set; }
-    public string? Turno { get; set; }
+    public TimeSpan? HorarioEntrada { get; set; }
+    public TimeSpan? HorarioSaida { get; set; }
     public string Email { get; set; }
-    public int EnderecoId { get; set; }
-    public string senha { get; set; }
+    public string Senha { get; set; }
     public int AlaId { get; set; }
 
     // Relacionamentos
-    public Endereco Endereco { get; set; }
     public Ala Ala { get; set; }
     public ICollection<Relatorio> Relatorios { get; set; }
 }

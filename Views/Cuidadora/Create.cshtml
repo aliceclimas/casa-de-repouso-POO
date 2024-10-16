@@ -1,0 +1,98 @@
+@model CasaRepousoWeb.Models.Cuidadora
+@using CasaRepousoWeb.Models
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastrar Cuidadora</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Cadastrar Cuidadora</h2>
+        <form action="/cuidadora/Create" method="post">
+            @Html.AntiForgeryToken()
+
+            <div class="form-group">
+                <label for="nome">Nome</label>
+                <input type="text" class="form-control" placeholder="Nome" name="Nome" required>
+            </div>
+
+            <div class="form-group">
+                <label for="sobrenome">Sobrenome</label>
+                <input type="text" class="form-control" placeholder="Sobrenome" name="Sobrenome" required>
+            </div>
+
+            <div class="form-group">
+                <label for="cpf">CPF</label>
+                <input type="text" class="form-control" placeholder="CPF" name="CPF" required pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" title="Formato: 000.000.000-00">
+            </div>
+
+            <div class="form-group">
+                <label for="telefone">Telefone</label>
+                <input type="text" class="form-control" placeholder="Telefone" name="Telefone">
+            </div>
+
+            <div class="form-group">
+                <label for="horarioEntrada">Horário de Entrada</label>
+                <input type="time" class="form-control" name="HorarioEntrada" >
+            </div>
+
+            <div class="form-group">
+                <label for="horarioSaida">Horário de Saída</label>
+                <input type="time" class="form-control" name="HorarioSaida" >
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" placeholder="Email" name="Email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="Senha">Senha</label>
+                <input type="password" class="form-control" placeholder="Senha" name="Senha" required>
+            </div>
+
+            <div class="form-group">
+                <label for="ala">Ala</label>
+                <select class="form-control" name="AlaId" required>
+                    <option value="">Selecione uma Ala</option>
+                    @if (ViewBag.Alas != null && ((IEnumerable<CasaRepousoWeb.Models.Ala>)ViewBag.Alas).Any())
+                    {
+                        foreach (var ala in ViewBag.Alas)
+                        {
+                            <option value="@ala.AlaId">@ala.Nome</option>
+                        }
+                    }
+                    else
+                    {
+                        <option value="">Nenhuma ala encontrada</option> 
+                    }
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-success">Cadastrar</button>
+            <a href="/idoso/read" class="btn btn-secondary">Voltar</a>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

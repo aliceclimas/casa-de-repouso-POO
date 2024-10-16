@@ -2,9 +2,13 @@ using Microsoft.AspNetCore.Mvc;
 using CasaRepousoWeb.Models;
 using CasaRepousoWeb.Data;
 using CasaRepousoWeb.Services;
+using Microsoft.AspNetCore.Authentication; 
+using Microsoft.AspNetCore.Authentication.Cookies;
+using System.Security.Claims;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CasaRepousoWeb.Controllers;
-
+[Authorize]
 public class IdosoController : Controller
 {
     private readonly CasaRepousoDatabase db;
@@ -87,7 +91,6 @@ public class IdosoController : Controller
     } 
 
     
-
     [HttpPost] 
     public IActionResult Create(Idoso idoso) 
     { 

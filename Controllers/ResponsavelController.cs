@@ -3,9 +3,11 @@ using CasaRepousoWeb.Models;
 using CasaRepousoWeb.Data;
 using CasaRepousoWeb.Services;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CasaRepousoWeb.Controllers;
 
+[Authorize]
 public class ResponsavelController : Controller
 {
     private readonly CasaRepousoDatabase db;
@@ -18,6 +20,8 @@ public class ResponsavelController : Controller
     public IActionResult Read(int id)
     {
         ViewBag.IdosoId = id;
+        var idoso = db.Idosos.Single(e => e.IdosoId == id);
+        ViewBag.Nome = idoso.Nome;
         // var responsaveis = db.Responsaveis.Where(e => e.IdosoId == id).ToList();
         var responsaveis = db.Responsaveis.Include(r => r.Enderecos).Where(e => e.IdosoId == id).ToList();
         return View(responsaveis);
