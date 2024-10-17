@@ -94,6 +94,13 @@ public class IdosoController : Controller
     [HttpPost] 
     public IActionResult Create(Idoso idoso) 
     { 
+        if (db.Idosos.Any(c => c.CPF == idoso.CPF))
+        {
+            ModelState.AddModelError("CPF", "O CPF já está em uso.");
+            ViewBag.Alas = db.Alas.ToList();
+            return View(idoso);
+        }
+
         db.Idosos.Add(idoso);
         db.SaveChanges();
         return RedirectToAction("Read");
@@ -113,6 +120,12 @@ public class IdosoController : Controller
     [HttpPost]
     public ActionResult Update(int id, Idoso model)
     {
+        if (db.Idosos.Any(c => c.CPF == model.CPF && c.IdosoId != id))
+        {
+            ModelState.AddModelError("CPF", "O CPF já está em uso.");
+            ViewBag.Alas = db.Alas.ToList();
+            return View(model);
+        }
 
         var idoso = db.Idosos.Single(e => e.IdosoId == id);
            
