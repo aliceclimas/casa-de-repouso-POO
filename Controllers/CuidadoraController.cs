@@ -114,59 +114,65 @@ public class CuidadoraController : Controller
             return NotFound();
         }
 
+        ViewBag.Alas = db.Alas.ToList();
         return View(cuidadora);
     }
 
     [Authorize]
     [HttpGet]
-    public IActionResult Update()
+    public IActionResult Update(int id)
     {
-        // Obtém o ID da cuidadora a partir das claims do usuário autenticado
-        var cuidadoraId = User.FindFirst("CuidadoraId")?.Value;
+        Cuidadora cuidadora = db.Cuidadoras.SingleOrDefault(e => e.CuidadoraId == id);
 
-        if (string.IsNullOrEmpty(cuidadoraId))
-        {
-            return RedirectToAction("Login");
-        }
+        ViewBag.Alas = db.Alas.ToList();
 
-        // Converte o ID para int
-        int id = int.Parse(cuidadoraId);
-
-        // Busca a cuidadora no banco de dados
-        var cuidadora = db.Cuidadoras.SingleOrDefault(c => c.CuidadoraId == id);
-
-        if (cuidadora == null)
-        {
-            return NotFound();
-        }
-
-        // Retorna a View para edição com os dados da cuidadora
         return View(cuidadora);
     }
 
     [Authorize]
     [HttpPost]
-    public IActionResult Edit(Cuidadora cuidadora)
+    public IActionResult Update(int id, Cuidadora cuidadora)
     {
-        if (!ModelState.IsValid)
-        {
-            return View(cuidadora);
-        }
-
-        // Atualiza a cuidadora no banco de dados
-        var existingCuidadora = db.Cuidadoras.SingleOrDefault(c => c.CuidadoraId == cuidadora.CuidadoraId);
-        if (existingCuidadora == null)
-        {
-            return NotFound();
-        }
+        var existingCuidadora = db.Cuidadoras.SingleOrDefault(c => c.CuidadoraId == id);
 
         existingCuidadora.Nome = cuidadora.Nome;
+        existingCuidadora.Sobrenome = cuidadora.Sobrenome;
         existingCuidadora.CPF = cuidadora.CPF;
         existingCuidadora.Telefone = cuidadora.Telefone;
         existingCuidadora.Email = cuidadora.Email;
 
+        // Atualiza HorarioEntrada apenas se não estiver vazio
+        if (!string.IsNullOrWhiteSpace(cuidadora.HorarioEntrada?.ToString()))
+        {
+            existingCuidadora.HorarioEntrada = cuidadora.HorarioEntrada;
+        }
+        else
+        {
+            existingCuidadora.HorarioEntrada = null; // ou mantenha o valor anterior
+        }
+
+        // Atualiza HorarioSaida apenas se não estiver vazio
+        if (!string.IsNullOrWhiteSpace(cuidadora.HorarioSaida?.ToString()))
+        {
+            existingCuidadora.HorarioSaida = cuidadora.HorarioSaida;
+        }
+        else
+        {
+            existingCuidadora.HorarioSaida = null; // ou mantenha o valor anterior
+        }
+        
+        existingCuidadora.AlaId = cuidadora.AlaId; 
+
+        // Atualiza a senha se fornecida
+        if (!string.IsNullOrWhiteSpace(cuidadora.Senha))
+        {
+            existingCuidadora.Senha = cuidadora.Senha;
+        }
+
+        // Salva as alterações no banco de dados
         db.SaveChanges();
 
-        return RedirectToAction("Read");
+        // Redireciona para a tela de leitura após a atualização
+        return RedirectToAction("Read", new { id = cuidadora.CuidadoraId });
     }
 }

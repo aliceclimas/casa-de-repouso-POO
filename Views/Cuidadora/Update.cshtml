@@ -1,0 +1,103 @@
+@model CasaRepousoWeb.Models.Cuidadora
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Perfil</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            background: white;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+            margin-top: 20px;
+        }
+        h2 {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .form-group label {
+            font-weight: bold;
+        }
+        .btn {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Editar Perfil</h2>
+        <form method="post" action="/cuidadora/update/@Model.CuidadoraId">
+            <div class="form-group row">
+                <div class="col-md-6">
+                    <label for="nome">Nome</label>
+                    <input type="text" class="form-control" placeholder="Nome" name="Nome" value="@Model.Nome" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="sobrenome">Sobrenome</label>
+                    <input type="text" class="form-control" placeholder="Sobrenome" name="Sobrenome" value="@Model.Sobrenome" required>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-6">
+                    <label for="cpf">CPF</label>
+                    <input type="text" class="form-control" placeholder="CPF" name="CPF" value="@Model.CPF" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="telefone">Telefone</label>
+                    <input type="text" class="form-control" placeholder="Telefone" name="Telefone" value="@Model.Telefone">
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-6">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" placeholder="Email" name="Email" value="@Model.Email" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="alaId">Ala</label>
+                    <select class="form-control" name="AlaId" required>
+                        <option value="">Selecione uma Ala</option>
+                        @foreach (var ala in ViewBag.Alas)
+                        {
+                            <option value="@ala.AlaId" @(ala.AlaId == Model.AlaId ? "selected" : "")>@ala.Nome</option>
+                        }
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-6">
+                    <label for="horarioEntrada">Horário de Entrada</label>
+                    <input type="time" class="form-control" name="HorarioEntrada" value="@Model.HorarioEntrada" >
+                </div>
+                <div class="col-md-6">
+                    <label for="horarioSaida">Horário de Saída</label>
+                    <input type="time" class="form-control" name="HorarioSaida" value="@Model.HorarioSaida" >
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="senha">Senha</label>
+                <input type="password" class="form-control" placeholder="Deixe em branco para não alterar" name="Senha">
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-primary">Salvar</button>
+                <a href="/cuidadora/Read/@Model.CuidadoraId" class="btn btn-secondary">Cancelar</a>
+            </div>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
