@@ -17,8 +17,10 @@ public class MedicacaoController : Controller
     }
 
     public IActionResult Read(int id)
-    {
-        ViewBag.IdosoId = id;
+    {   
+        var idoso = db.Idosos.SingleOrDefault(i => i.IdosoId == id);
+
+        ViewBag.Idoso = idoso;
         var medicacoes = db.Medicacoes.Where(e => e.IdosoId == id).ToList();
         
         return View(medicacoes);

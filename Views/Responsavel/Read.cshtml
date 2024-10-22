@@ -17,7 +17,7 @@
 </head>
 <body>
     <div class="container mt-5">
-        <h2>Responsáveis do @ViewBag.Nome</h2>
+        <h2>Responsáveis: @ViewBag.Idoso.Nome</h2>
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -50,20 +50,27 @@
                         <tr class="endereco-container" id="enderecos-@responsavel.ResponsavelId">
                             <td colspan="6">
                                 <h5>Endereços:</h5>
-                                <ul>
-                                    @foreach (var endereco in responsavel.Enderecos)
-                                    {
-                                        <li>
-                                            <strong>@endereco.Descricao:</strong> @endereco.Rua, @endereco.NumeroCasa, @endereco.Bairro, @endereco.CEP
-                                            @if (!string.IsNullOrEmpty(endereco.Complemento))
-                                            {
-                                                <span> - Complemento: @endereco.Complemento</span>
-                                            }
-                                            <a href="/endereco/update/@endereco.EnderecoId" class="btn btn-sm btn-outline-warning">Editar Endereço</a>
-                                            <a href="/endereco/delete/@endereco.EnderecoId" class="btn btn-sm btn-outline-warning">Excluir</a>
-                                        </li>
-                                    }
-                                </ul>
+                                @if (responsavel.Enderecos != null)
+                                {
+                                    <ul>
+                                        @foreach (var endereco in responsavel.Enderecos.ToList())
+                                        {
+                                            <li>
+                                                <strong>@endereco.Descricao:</strong> @endereco.Rua, @endereco.NumeroCasa, @endereco.Bairro, @endereco.CEP
+                                                @if (!string.IsNullOrEmpty(endereco.Complemento))
+                                                {
+                                                    <span> - Complemento: @endereco.Complemento</span>
+                                                }
+                                                <a href="/endereco/update/@endereco.EnderecoId" class="btn btn-sm btn-outline-warning">Editar Endereço</a>
+                                                <a href="/endereco/delete/@endereco.EnderecoId" class="btn btn-sm btn-outline-warning">Excluir</a>
+                                            </li>
+                                        }
+                                    </ul>
+                                }
+                                else
+                                {
+                                    <p>Este responsável não possui endereços cadastrados.</p>
+                                }
                                 <a href="/endereco/create/@responsavel.ResponsavelId" class="btn btn-sm btn-outline-warning">Adicionar Endereço</a>
                             </td>
                         </tr>
@@ -79,7 +86,7 @@
         </table>
         <div>
             <!-- Botão para cadastrar um novo responsável e voltar -->
-            <a href="/responsavel/create/@ViewBag.IdosoId" class="btn btn-primary">Novo Responsável</a>
+            <a href="/responsavel/create/@ViewBag.Idoso.IdosoId" class="btn btn-primary">Novo Responsável</a>
             <a href="/idoso/read" class="btn btn-secondary">Voltar</a>
         </div>
     </div>

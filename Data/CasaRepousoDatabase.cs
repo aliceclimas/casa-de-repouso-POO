@@ -15,5 +15,6 @@ public class CasaRepousoDatabase : DbContext
     public DbSet<Endereco> Enderecos { get; set; }
     public DbSet<Idoso> Idosos { get; set; }
     public DbSet<Medicacao> Medicacoes { get; set; }
+    public DbSet<Relatorio> Relatorios { get; set; }
 }
 

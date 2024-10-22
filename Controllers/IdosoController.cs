@@ -49,6 +49,12 @@ public class IdosoController : Controller
     {
         var query = db.Idosos.AsQueryable();
 
+        var cuidadoraId = User.FindFirst("CuidadoraId")?.Value;
+
+        int id = int.Parse(cuidadoraId);
+
+        var cuidadora = db.Cuidadoras.SingleOrDefault(c => c.CuidadoraId == id);
+
         // Filtrando por Nome
         if (!string.IsNullOrWhiteSpace(nome))
         {
@@ -73,14 +79,13 @@ public class IdosoController : Controller
             Idade = _idosoService.CalcularIdade(idoso.DataNascimento)
         }).ToList();
 
+        ViewBag.Cuidadoras = cuidadora;
         ViewBag.Idosos = idososComIdade;
         ViewBag.Alas = db.Alas.ToList();
         ViewBag.Situacoes = db.Situacoes.ToList();
 
         return View();
     }
-
-
 
     [HttpGet]
     public IActionResult Create() 
@@ -97,6 +102,7 @@ public class IdosoController : Controller
         if (db.Idosos.Any(c => c.CPF == idoso.CPF))
         {
             ModelState.AddModelError("CPF", "O CPF já está em uso.");
+            ViewBag.Situacoes = db.Situacoes.ToList();
             ViewBag.Alas = db.Alas.ToList();
             return View(idoso);
         }
@@ -123,6 +129,7 @@ public class IdosoController : Controller
         if (db.Idosos.Any(c => c.CPF == model.CPF && c.IdosoId != id))
         {
             ModelState.AddModelError("CPF", "O CPF já está em uso.");
+            ViewBag.Situacoes = db.Situacoes.ToList();
             ViewBag.Alas = db.Alas.ToList();
             return View(model);
         }

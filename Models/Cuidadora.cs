@@ -11,7 +11,7 @@ public class Cuidadora
     public TimeSpan? HorarioSaida { get; set; }
     public string Email { get; set; }
     public string Senha { get; set; }
-    public int AlaId { get; set; }
+    public int? AlaId { get; set; }
 
     // Relacionamentos
     public Ala Ala { get; set; }

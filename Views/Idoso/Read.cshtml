@@ -78,7 +78,7 @@
 <body>
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
-            <a class="navbar-brand" href="#">Casa Repouso</a>
+            <a class="navbar-brand" href="#">Casa Repouso - Usuario: @ViewBag.Cuidadoras.Nome</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -198,7 +198,7 @@
                         <div>
                             <a href="/medicacao/read/@item.Idoso.IdosoId" class="btn btn-outline-primary btn-sm">Medicações</a>
                             <a href="/responsavel/read/@item.Idoso.IdosoId" class="btn btn-outline-primary btn-sm">Responsáveis</a>
-                            <button class="btn btn-outline-secondary btn-sm">Relatórios</button>
+                            <a href="/relatorio/read/@item.Idoso.IdosoId" class="btn btn-outline-primary btn-sm">Relatórios</a>
                         </div>
                     </div>
                 </div>

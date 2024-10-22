@@ -15,7 +15,7 @@
 </head>
 <body>
     <div class="container mt-5">
-        <h2>Medicações</h2>
+        <h2>Medicações: @ViewBag.Idoso.Nome</h2>
         <table class="table table-no-borders">
             <thead>
                 <tr>
@@ -53,7 +53,7 @@
         </table>
         <div>
             <a href="/idoso/read" class="btn btn-secondary">Voltar</a>
-            <a href="/medicacao/create/@ViewBag.IdosoId" class="btn btn-primary">Nova Medicação</a>
+            <a href="/medicacao/create/@ViewBag.Idoso.IdosoId" class="btn btn-primary">Nova Medicação</a>
         </div>
     </div>
 

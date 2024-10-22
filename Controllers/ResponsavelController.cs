@@ -18,11 +18,11 @@ public class ResponsavelController : Controller
     }
 
     public IActionResult Read(int id)
-    {
-        ViewBag.IdosoId = id;
-        var idoso = db.Idosos.Single(e => e.IdosoId == id);
-        ViewBag.Nome = idoso.Nome;
-        // var responsaveis = db.Responsaveis.Where(e => e.IdosoId == id).ToList();
+    {   
+        var idoso = db.Idosos.SingleOrDefault(i => i.IdosoId == id);
+        
+        ViewBag.Idoso = idoso;
+
         var responsaveis = db.Responsaveis.Include(r => r.Enderecos).Where(e => e.IdosoId == id).ToList();
         return View(responsaveis);
     }

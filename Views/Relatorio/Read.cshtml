@@ -1,0 +1,71 @@
+@model IEnumerable<CasaRepousoWeb.Models.Relatorio>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relatório do Idoso</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        .descricao-oculta {
+            display: none;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Relatórios do Idoso: @ViewBag.Idoso.Nome</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Título</th>
+                    <th>Data</th>
+                    <th>Descrição</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var relatorio in Model)
+                {
+                    <tr>
+                        <td>@relatorio.Titulo</td>
+                        <td>@relatorio.Data.ToString("dd/MM/yyyy HH:mm")</td>
+                        <td>
+                            <div>
+                                <span class="descricao-oculta" id="descricao-@relatorio.RelatorioId">@relatorio.Descricao</span>
+                                <button id="btn-@relatorio.RelatorioId" class="btn btn-link" onclick="toggleDescricao(@relatorio.RelatorioId)">Ver Descrição</button>
+                            </div>
+                        </td>
+                        <td>
+                            <!-- Adicione suas ações aqui, como editar ou excluir -->
+                            <a href="/relatorio/update/@relatorio.RelatorioId" class="btn btn-warning">Editar</a>
+                            <a href="/relatorio/delete/@relatorio.RelatorioId" class="btn btn-danger">Excluir</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div>
+            <a href="/idoso/read/" class="btn btn-secondary">Voltar</a>
+            <a href="/relatorio/create/@ViewBag.Idoso.IdosoId" class="btn btn-primary mb-3">Novo Relatório</a>
+        </div>
+    </div>
+
+    <script>
+        function toggleDescricao(id) {
+            const descricao = document.getElementById(`descricao-${id}`);
+            const btn = document.getElementById(`btn-${id}`);
+            if (descricao.classList.contains('descricao-oculta')) {
+                descricao.classList.remove('descricao-oculta');
+                btn.innerText = 'Ocultar Descrição';
+            } else {
+                descricao.classList.add('descricao-oculta');
+                btn.innerText = 'Ver Descrição';
+            }
+        }
+    </script>
+
+</body>
+</html>
