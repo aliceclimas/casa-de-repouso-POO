@@ -2,93 +2,146 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using CasaRepousoWeb.Models;
 using CasaRepousoWeb.Data;
+using System.Linq;
 
-namespace CasaRepousoWeb.Controllers;
-
-[Authorize]
-public class RelatorioController : Controller
+namespace CasaRepousoWeb.Controllers
 {
-    private readonly CasaRepousoDatabase db;
-
-    public RelatorioController(CasaRepousoDatabase db)
+    [Authorize]
+    public class RelatorioController : Controller
     {
-        this.db = db;
-    }
+        private readonly CasaRepousoDatabase db;
 
-    [HttpGet]
-    public IActionResult Read(int id)
-    {
-        var idoso = db.Idosos.SingleOrDefault(i => i.IdosoId == id);
+        public RelatorioController(CasaRepousoDatabase db)
+        {
+            this.db = db;
+        }
 
-        var relatorios = db.Relatorios
-        .Where(r => r.IdosoId == id)
-        .OrderByDescending(r => r.Data)
-        .ToList();
+        [HttpGet]
+        public IActionResult Read(int id)
+        {
+            var idoso = db.Idosos.SingleOrDefault(i => i.IdosoId == id);
 
-        ViewBag.Idoso = idoso;
-        return View(relatorios);
-    }
+            // Pega todos os relatórios associados ao IdosoId
+            var relatorios = db.Relatorios
+                .Where(r => r.IdosoId == id)
+                .OrderByDescending(r => r.Data)
+                .ToList();
 
+            // Cria um dicionário para associar cada relatório às cuidadoras
+            var relatorioComCuidadoras = new List<dynamic>();
 
-    [HttpGet]
-    public IActionResult Create(int id)
-    {
-        var idoso = db.Idosos.SingleOrDefault(i => i.IdosoId == id);
+            foreach (var relatorio in relatorios)
+            {
+                var relatorioCuidadora = db.RelatorioCuidadora
+                    .Where(rc => rc.RelatorioId == relatorio.RelatorioId)
+                    .ToList();
 
-        ViewBag.IdosoId = id;
-        return View();
-    }
+                foreach (var rc in relatorioCuidadora)
+                {
+                    rc.Cuidadora = db.Cuidadoras
+                        .SingleOrDefault(c => c.CuidadoraId == rc.CuidadoraId);
+                }
 
-    [HttpPost]
-    public IActionResult Create(int id, Relatorio relatorio)
-    {
-        
-        var cuidadoraId = int.Parse(User.FindFirst("CuidadoraId")?.Value);
+                // Adiciona um objeto anônimo contendo o relatório e suas cuidadoras
+                relatorioComCuidadoras.Add(new 
+                {
+                    Relatorio = relatorio,
+                    Cuidadoras = relatorioCuidadora
+                });
+            }
 
-        relatorio.IdosoId = id;
-        relatorio.CuidadoraId = cuidadoraId;
-        relatorio.Data = DateTime.Now; 
+            ViewBag.Idoso = idoso;
+            return View(relatorioComCuidadoras); // Passa o novo objeto para a view
+        }
 
-        db.Relatorios.Add(relatorio);
-        db.SaveChanges();
+        [HttpGet]
+        public IActionResult Create(int id)
+        {
+            var idoso = db.Idosos.SingleOrDefault(i => i.IdosoId == id);
+            ViewBag.IdosoId = id;
+            return View();
+        }
 
-        return RedirectToAction("Read", new { id = relatorio.IdosoId });
-    }
+        [HttpPost]
+        public IActionResult Create(int id, Relatorio relatorio)
+        {
+            // Pega o id da cuidadora logada
+            var cuidadoraId = int.Parse(User.FindFirst("CuidadoraId")?.Value);
 
-    [HttpGet]
-    public IActionResult Update(int id)
-    {
-        var relatorio = db.Relatorios.SingleOrDefault(r => r.RelatorioId == id);
+            relatorio.IdosoId = id;
+            relatorio.Data = DateTime.Now; // Define a data de criação
 
-        var idoso = db.Idosos.SingleOrDefault(i => i.IdosoId == relatorio.IdosoId);
+            // Adiciona o relatório
+            db.Relatorios.Add(relatorio);
+            db.SaveChanges();
 
-        ViewBag.Idoso = idoso;
+            // Cria a relação na tabela RelatorioCuidadora
+            var relatorioCuidadora = new RelatorioCuidadora
+            {
+                RelatorioId = relatorio.RelatorioId,
+                CuidadoraId = cuidadoraId,
+                Acao = "Criada"
+            };
 
-        return View(relatorio);
-    }
+            db.RelatorioCuidadora.Add(relatorioCuidadora);
+            db.SaveChanges();
 
-    [HttpPost]
-    public IActionResult Update(Relatorio relatorio)
-    {
-        var existingRelatorio = db.Relatorios.SingleOrDefault(r => r.RelatorioId == relatorio.RelatorioId);
+            return RedirectToAction("Read", new { id = relatorio.IdosoId });
+        }
 
-        existingRelatorio.Titulo = relatorio.Titulo;
-        existingRelatorio.Descricao = relatorio.Descricao;
-        existingRelatorio.Data = DateTime.Now; // Atualiza a data para o momento da edição
+        [HttpGet]
+        public IActionResult Update(int id)
+        {
+            var relatorio = db.Relatorios.SingleOrDefault(r => r.RelatorioId == id);
+            var idoso = db.Idosos.SingleOrDefault(i => i.IdosoId == relatorio.IdosoId);
+            ViewBag.Idoso = idoso;
 
-        db.SaveChanges();
+            return View(relatorio);
+        }
 
-        return RedirectToAction("Read", new { id = relatorio.IdosoId });
-    }
+        [HttpPost]
+        public IActionResult Update(Relatorio relatorio)
+        {
+            var existingRelatorio = db.Relatorios.SingleOrDefault(r => r.RelatorioId == relatorio.RelatorioId);
 
-    [HttpPost]
-    public IActionResult Delete(int id)
-    {
-        var relatorio = db.Relatorios.SingleOrDefault(r => r.RelatorioId == id);
+            existingRelatorio.Titulo = relatorio.Titulo;
+            existingRelatorio.Descricao = relatorio.Descricao;
+            existingRelatorio.Data = DateTime.Now; // Atualiza a data para a edição
 
-        db.Relatorios.Remove(relatorio);
-        db.SaveChanges();
+            // Pega o id da cuidadora logada
+            var cuidadoraId = int.Parse(User.FindFirst("CuidadoraId")?.Value);
 
-        return RedirectToAction("Read", new { id = relatorio.IdosoId });
+            // Verifica se foi a mesma cuidadora que criou ou editou o relatório
+            var relatorioCuidadora = db.RelatorioCuidadora
+                .SingleOrDefault(rc => rc.RelatorioId == relatorio.RelatorioId && rc.CuidadoraId == cuidadoraId);
+
+            if (relatorioCuidadora == null)
+            {
+                // Se não foi a mesma cuidadora, registra a ação de edição
+                var novaRelacao = new RelatorioCuidadora
+                {
+                    RelatorioId = relatorio.RelatorioId,
+                    CuidadoraId = cuidadoraId,
+                    Acao = "Editada"
+                };
+
+                db.RelatorioCuidadora.Add(novaRelacao);
+            }
+
+            db.SaveChanges();
+
+            return RedirectToAction("Read", new { id = relatorio.IdosoId });
+        }
+
+        [HttpPost]
+        public IActionResult Delete(int id)
+        {
+            var relatorio = db.Relatorios.SingleOrDefault(r => r.RelatorioId == id);
+
+            db.Relatorios.Remove(relatorio);
+            db.SaveChanges();
+
+            return RedirectToAction("Read", new { id = relatorio.IdosoId });
+        }
     }
 }

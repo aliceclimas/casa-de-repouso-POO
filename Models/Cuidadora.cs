@@ -15,5 +15,4 @@ public class Cuidadora
 
     // Relacionamentos
     public Ala Ala { get; set; }
-    public ICollection<Relatorio> Relatorios { get; set; }
 }

@@ -1,28 +1,28 @@
-@model IEnumerable<CasaRepousoWeb.Models.Relatorio>
+@model IEnumerable<dynamic>
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Relatório do Idoso</title>
+    <title>Relatórios do Idoso</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
         .descricao-oculta {
             display: none;
         }
     </style>
-
 </head>
 <body>
     <div class="container mt-5">
-        <h2>Relatórios do Idoso: @ViewBag.Idoso.Nome</h2>
+        <h2>Relatórios do Idoso: @ViewBag.Idoso?.Nome</h2>
         <table class="table">
             <thead>
                 <tr>
                     <th>Título</th>
                     <th>Data</th>
                     <th>Descrição</th>
+                    <th>Cuidadoras</th>
                     <th>Ações</th>
                 </tr>
             </thead>
@@ -30,18 +30,36 @@
                 @foreach (var relatorio in Model)
                 {
                     <tr>
-                        <td>@relatorio.Titulo</td>
-                        <td>@relatorio.Data.ToString("dd/MM/yyyy HH:mm")</td>
+                        <td>@relatorio.Relatorio.Titulo</td>
+                        <td>@relatorio.Relatorio.Data.ToString("dd/MM/yyyy HH:mm")</td>
                         <td>
                             <div>
-                                <span class="descricao-oculta" id="descricao-@relatorio.RelatorioId">@relatorio.Descricao</span>
-                                <button id="btn-@relatorio.RelatorioId" class="btn btn-link" onclick="toggleDescricao(@relatorio.RelatorioId)">Ver Descrição</button>
+                                <span class="descricao-oculta" id="descricao-@relatorio.Relatorio.RelatorioId">@relatorio.Relatorio.Descricao</span>
+                                <button id="btn-@relatorio.Relatorio.RelatorioId" class="btn btn-link" onclick="toggleDescricao(@relatorio.Relatorio.RelatorioId)">Ver Descrição</button>
                             </div>
                         </td>
                         <td>
-                            <!-- Adicione suas ações aqui, como editar ou excluir -->
-                            <a href="/relatorio/update/@relatorio.RelatorioId" class="btn btn-warning">Editar</a>
-                            <a href="/relatorio/delete/@relatorio.RelatorioId" class="btn btn-danger">Excluir</a>
+                            @if (relatorio.Cuidadoras.Count > 1) 
+                            {
+                                <button class="btn btn-info" onclick="toggleCuidadoras('cuidadoras-@relatorio.Relatorio.RelatorioId')">Ver Cuidadoras</button>
+                                <div id="cuidadoras-@relatorio.Relatorio.RelatorioId" class="collapse">
+                                    @foreach (var relatorioCuidadora in relatorio.Cuidadoras)
+                                    {
+                                        <p>@relatorioCuidadora.Cuidadora?.Nome @relatorioCuidadora.Cuidadora?.Sobrenome: @relatorioCuidadora.Acao</p>
+                                    }
+                                </div>
+                            }
+                            else
+                            {
+                                foreach (var relatorioCuidadora in relatorio.Cuidadoras)
+                                {
+                                    <p>@relatorioCuidadora.Cuidadora?.Nome @relatorioCuidadora.Cuidadora?.Sobrenome</p>
+                                }
+                            }
+                        </td>
+                        <td>
+                            <a href="/relatorio/update/@relatorio.Relatorio.RelatorioId" class="btn btn-warning">Editar</a>
+                            <a href="/relatorio/delete/@relatorio.Relatorio.RelatorioId" class="btn btn-danger">Excluir</a>
                         </td>
                     </tr>
                 }
@@ -49,7 +67,7 @@
         </table>
         <div>
             <a href="/idoso/read/" class="btn btn-secondary">Voltar</a>
-            <a href="/relatorio/create/@ViewBag.Idoso.IdosoId" class="btn btn-primary mb-3">Novo Relatório</a>
+            <a href="/relatorio/create/@ViewBag.Idoso?.IdosoId" class="btn btn-primary mb-3">Novo Relatório</a>
         </div>
     </div>
 
@@ -65,7 +83,19 @@
                 btn.innerText = 'Ver Descrição';
             }
         }
-    </script>
 
+        function toggleCuidadoras(id) {
+            const cuidadoras = document.getElementById(id);
+            if (cuidadoras.classList.contains('collapse')) {
+                cuidadoras.classList.remove('collapse');
+                cuidadoras.classList.add('show');
+            } else {
+                cuidadoras.classList.remove('show');
+                cuidadoras.classList.add('collapse');
+            }
+        }
+    </script>
 </body>
 </html>
+
+
