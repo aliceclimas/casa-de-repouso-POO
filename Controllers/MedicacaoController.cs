@@ -1,89 +1,71 @@
-using CasaRepousoWeb.Models; 
-using Microsoft.AspNetCore.Mvc; 
-using Microsoft.EntityFrameworkCore;
-using CasaRepousoWeb.Data;
+using Microsoft.AspNetCore.Mvc;
 using CasaRepousoWeb.Models;
+using CasaRepousoWeb.Data;
+using CasaRepousoWeb.Services;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CasaRepousoWeb.Controllers;
 
+[Authorize]
 public class MedicacaoController : Controller
 {
     private readonly CasaRepousoDatabase db;
 
-    public  MedicacaoController(CasaRepousoDatabase db) {
+    public MedicacaoController(CasaRepousoDatabase db)
+    {
         this.db = db;
     }
 
-    // controller = classe
-    // action = método
-    public ActionResult Read()
-    {        
-        return View(db.Medicacoes.ToList()); // ~ SELECT * FROM Medicações
+    public IActionResult Read(int id)
+    {   
+        var idoso = db.Idosos.SingleOrDefault(i => i.IdosoId == id);
+
+        ViewBag.Idoso = idoso;
+        var medicacoes = db.Medicacoes.Where(e => e.IdosoId == id).ToList();
+        
+        return View(medicacoes);
     }
 
-    [HttpGet]
-    public ActionResult Create()
+    public IActionResult Create(int id)
     {
+        ViewBag.IdosoId = id; 
         return View();
     }
-
     [HttpPost]
-    public ActionResult Create(Medicacao model)
+    public IActionResult Create(int id, Medicacao medicacao)
     {
-        db.Medicacoes.Add(model); // ~ INSERT INTO Medicacao VALUES ()
-        db.SaveChanges(); // commit
-        return RedirectToAction("Read");
-    }
-
-    // sem POST pois em exclusão a solicitação é do tipo GET
-    public ActionResult Delete(int id){
-
-        var medicacao = db.Medicacoes.Where(e => e.MedicacaoId == id).First();
-        return View(medicacao); // Retorna uma view de confirmação
-    }
-    // Método que confirma a exclusão com uma view e um segundo método que realiza a exclusão
-    [HttpPost]
-    public ActionResult ConfirmarDelete(int id){
-
-        var medicacao = db.Medicacoes.Where(e => e.MedicacaoId == id).First();;
-        db.Medicacoes.Remove(medicacao);
+        medicacao.IdosoId = id;
+        // Salvar a nova medicação no banco de dados
+        db.Medicacoes.Add(medicacao);
         db.SaveChanges();
-        return RedirectToAction("Read");
-
+        
+        // Redirecionar para a lista de medicações após a criação
+        return RedirectToAction("Read", new { id = medicacao.IdosoId });
     }
 
-    [HttpGet]
     public ActionResult Update(int id)
     {
-        Medicacao medicacao = db.Medicacoes.Single(e => e.MedicacaoId == id);
+        var medicacao = db.Medicacoes.Single(e => e.MedicacaoId == id);
+        ViewBag.IdosoId = medicacao.IdosoId;
         return View(medicacao);
     }
 
     [HttpPost]
-    public ActionResult Update(int id,Medicacao model)
+    public IActionResult Update(Medicacao medicacao)
+    {
+        db.Medicacoes.Update(medicacao);
+        db.SaveChanges();
+        
+        return RedirectToAction("Read", new { id = medicacao.IdosoId });
+    }
+
+    public ActionResult Delete(int id)
     {
         var medicacao = db.Medicacoes.Single(e => e.MedicacaoId == id);
-        medicacao.IdosoId = model.IdosoId;
-        medicacao.NomeMedicamento = model.NomeMedicamento;
-        medicacao.Descricao = model.Descricao;
-        
+
+        db.Medicacoes.Remove(medicacao);
         db.SaveChanges();
-        return RedirectToAction("Read");
-    }
 
-    [HttpGet]
-    public ActionResult Pesquisa()
-    {
-        return View();
+        return RedirectToAction("Read", new { id = medicacao.IdosoId });
     }
-    [HttpPost]
-    public ActionResult Pesquisa(string texto)
-    {
-        var resultado = db.Medicacoes
-            .Where(x => x.NomeMedicamento.Contains(texto) || x.Descricao.Contains(texto))
-            .OrderBy(x => x.NomeMedicamento)
-            .ToList(); // retorna resultado como uma lista
-        return View(resultado);
-    }
-
 }

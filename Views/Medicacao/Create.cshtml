@@ -1,22 +1,38 @@
+@model CasaRepousoWeb.Models.Medicacao
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <title>Criar Medicação</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
-<body class="container">
-    
-    <h2>Medicação</h2>
-    
-    <form action="/fmedicacao/create" method="POST" class="col offset-md-2 col-8">
-        <input placeholder="Idoso" name="IdosoId" class="form-control" /><br/>
-        <input placeholder="Nome do medicamento" name="NomeMedicamento" class="form-control" /><br/>
-        <input placeholder="Descrição" name="Descricao" class="form-control" /><br/>
-        <button class="btn btn-primary">Salvar</button>
-        <a class="btn btn-outline-secondary" href="/medicacao/read">Voltar</a>
-    </form>
-
+<body>
+    <div class="container mt-5">
+        <h2>Criar Nova Medicação</h2>
+        <form asp-action="Create" method="post">
+            <input type="hidden" name="IdosoId" value="@ViewBag.IdosoId" />
+            <div class="form-group">
+                <label for="NomeMedicamento">Nome do Medicamento</label>
+                <input type="text" class="form-control" id="NomeMedicamento" name="NomeMedicamento" required />
+            </div>
+            <div class="form-group">
+                <label for="Dosagem">Dosagem</label>
+                <input type="text" class="form-control" id="Dosagem" name="Dosagem"  />
+            </div>
+            <div class="form-group">
+                <label for="Descricao">Descricao</label>
+                <input type="text" class="form-control" id="Descricao" name="Descricao"  />
+            </div>
+            <div class="form-group">
+                <label for="Horario">Horário</label>
+                <input type="time" class="form-control" id="Horario" name="Horario"  />
+            </div>
+            <button type="submit" class="btn btn-primary">Salvar</button>
+            <a href="/medicacao/read/@ViewBag.IdosoId" class="btn btn-secondary">Voltar</a>
+        </form>
+    </div>
 </body>
 </html>

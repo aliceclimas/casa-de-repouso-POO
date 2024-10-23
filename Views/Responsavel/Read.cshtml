@@ -1,0 +1,103 @@
+@model IEnumerable<CasaRepousoWeb.Models.Responsavel>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsáveis do Idoso</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <style>
+        .endereco-container {
+            display: none; /* Esconder inicialmente */
+            margin-top: 10px; /* Espaçamento entre a tabela e os endereços */
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Responsáveis: @ViewBag.Idoso.Nome</h2>
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Sobrenome</th>
+                    <th>CPF</th>
+                    <th>Telefone</th>
+                    <th>Email</th>
+                    <th>Ações</th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null && Model.Any())
+                {
+                    foreach (var responsavel in Model)
+                    {
+                        <tr>
+                            <td>@responsavel.Nome</td>
+                            <td>@responsavel.Sobrenome</td>
+                            <td>@responsavel.CPF</td>
+                            <td>@responsavel.Telefone</td>
+                            <td>@responsavel.Email</td>
+                            <td>
+                                <!-- Botões de Ações (Editar, Excluir e Expandir Endereços) -->
+                                <a href="/responsavel/update/@responsavel.ResponsavelId" class="btn btn-sm btn-outline-success">Editar</a>
+                                <a href="/responsavel/delete/@responsavel.ResponsavelId" class="btn btn-sm btn-outline-danger">Excluir</a>
+                                <button class="btn btn-sm btn-outline-info toggle-enderecos" data-id="@responsavel.ResponsavelId">Endereço</button>
+                            </td>
+                        </tr>
+                        <tr class="endereco-container" id="enderecos-@responsavel.ResponsavelId">
+                            <td colspan="6">
+                                <h5>Endereços:</h5>
+                                @if (responsavel.Enderecos != null)
+                                {
+                                    <ul>
+                                        @foreach (var endereco in responsavel.Enderecos.ToList())
+                                        {
+                                            <li>
+                                                <strong>@endereco.Descricao:</strong> @endereco.Rua, @endereco.NumeroCasa, @endereco.Bairro, @endereco.CEP
+                                                @if (!string.IsNullOrEmpty(endereco.Complemento))
+                                                {
+                                                    <span> - Complemento: @endereco.Complemento</span>
+                                                }
+                                                <a href="/endereco/update/@endereco.EnderecoId" class="btn btn-sm btn-outline-warning">Editar Endereço</a>
+                                                <a href="/endereco/delete/@endereco.EnderecoId" class="btn btn-sm btn-outline-warning">Excluir</a>
+                                            </li>
+                                        }
+                                    </ul>
+                                }
+                                else
+                                {
+                                    <p>Este responsável não possui endereços cadastrados.</p>
+                                }
+                                <a href="/endereco/create/@responsavel.ResponsavelId" class="btn btn-sm btn-outline-warning">Adicionar Endereço</a>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="6" class="text-center">Nenhum responsável encontrado para este idoso.</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <div>
+            <!-- Botão para cadastrar um novo responsável e voltar -->
+            <a href="/responsavel/create/@ViewBag.Idoso.IdosoId" class="btn btn-primary">Novo Responsável</a>
+            <a href="/idoso/read" class="btn btn-secondary">Voltar</a>
+        </div>
+    </div>
+
+    <script>
+        $(document).ready(function() {
+            $(".toggle-enderecos").click(function() {
+                var responsavelId = $(this).data("id");
+                $("#enderecos-" + responsavelId).toggle(); // Alterna a visibilidade do container
+            });
+        });
+    </script>
+</body>
+</html>

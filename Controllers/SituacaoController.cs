@@ -2,10 +2,11 @@ using CasaRepousoWeb.Models;
 using Microsoft.AspNetCore.Mvc; 
 using Microsoft.EntityFrameworkCore;
 using CasaRepousoWeb.Data;
-using CasaRepousoWeb.Models;
+using Microsoft.AspNetCore.Authorization;
 
 namespace CasaRepousoWeb.Controllers;
 
+[Authorize]
 public class SituacaoController : Controller 
 { 
     private readonly CasaRepousoDatabase db; 

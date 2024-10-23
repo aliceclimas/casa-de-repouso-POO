@@ -7,9 +7,8 @@ public class Relatorio
     public DateTime Data { get; set; }
     public string? Descricao { get; set; }
     public int IdosoId { get; set; }
-    public int CuidadoraId { get; set; }
 
     // Relacionamentos
     public Idoso Idoso { get; set; }
-    public Cuidadora Cuidadora { get; set; }
+
 }

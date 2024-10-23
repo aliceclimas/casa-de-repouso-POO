@@ -1,0 +1,68 @@
+@model CasaRepousoWeb.Models.Cuidadora
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perfil da Cuidadora</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        .container {
+            background: white;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Perfil da Cuidadora</h2>
+        <div class="form-group">
+            <label><strong>Nome:</strong> @Model.Nome</label>
+        </div>
+
+        <div class="form-group">
+            <label><strong>Sobrenome: </strong> @Model.Sobrenome</label>
+        </div>
+
+        <div class="form-group">
+            <label><strong>CPF:</strong> @Model.CPF</label>
+        </div>
+
+        <div class="form-group">
+            <label><strong>Telefone:</strong> @(string.IsNullOrWhiteSpace(Model.Telefone) ? "Não definido" : Model.Telefone)</label>
+        </div>
+
+        <div class="form-group">
+            <label><strong>Horário de Entrada: </strong> @(Model.HorarioEntrada.HasValue ? Model.HorarioEntrada.Value.ToString(@"hh\:mm") : "Não definido")</label>
+        </div>
+
+        <div class="form-group">
+            <label><strong>Horário de Saída: </strong> @(Model.HorarioSaida.HasValue ? Model.HorarioSaida.Value.ToString(@"hh\:mm") : "Não definido")</label>
+        </div>
+
+        <div class="form-group">
+            <label><strong>Email: </strong>@Model.Email </label>
+        </div>
+
+        <div class="form-group">
+            <label><strong>Ala: </strong>@Model.Ala?.Nome</label>
+        </div>
+
+        <a href="/Cuidadora/Update/@Model.CuidadoraId" class="btn btn-primary">Editar Perfil</a>
+        <a href="/Idoso/Read" class="btn btn-secondary">Voltar</a>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

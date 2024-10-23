@@ -1,0 +1,109 @@
+@model CasaRepousoWeb.Models.Idoso
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Idoso</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Editar Idoso</h2>
+        <form action="/idoso/Update/@Model.IdosoId" method="post">
+            @Html.AntiForgeryToken()
+            <div class="form-group row">
+                <div class="col-md-6">
+                    <label for="nome">Nome</label>
+                    <input type="text" class="form-control" placeholder="Nome" name="Nome" value="@Model.Nome" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="sobrenome">Sobrenome</label>
+                    <input type="text" class="form-control" placeholder="Sobrenome" name="Sobrenome" value="@Model.Sobrenome" required>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-6">
+                    <label for="cpf">CPF</label>
+                    <input type="text" class="form-control" placeholder="CPF" name="cpf" value="@Model.CPF" required pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" title="Formato: 000.000.000-00">
+                    @Html.ValidationMessageFor(model => model.CPF, "", new { @class = "text-danger" })
+                </div>
+                <div class="col-md-6">
+                    <label for="dataNascimento">Data de Nascimento</label>
+                    <input type="date" class="form-control" name="dataNascimento" value="@Model.DataNascimento.ToString("yyyy-MM-dd")" required>
+                </div>
+            </div>
+
+            <div class="form-group row">
+                <div class="col-md-6">
+                    <label for="ala">Ala</label>
+                    <select class="form-control" name="AlaId" required>
+                        <option value="">Filtrar por Ala</option>
+                        @if (ViewBag.Alas != null && ((IEnumerable<CasaRepousoWeb.Models.Ala>)ViewBag.Alas).Any()) 
+                        {
+                            foreach (var ala in ViewBag.Alas)
+                            {
+                                <option value="@ala.AlaId" @(ala.AlaId == Model.AlaId ? "selected" : "")>@ala.Nome</option>
+                            }
+                        }
+                        else
+                        {
+                            <option value="">Nenhuma ala encontrada</option> 
+                        }
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label for="situacao">Situação</label>
+                    <select class="form-control" name="SituacaoId" required>
+                        <option value="">Filtrar por Situação</option>
+                        @if (ViewBag.Situacoes != null && ((IEnumerable<CasaRepousoWeb.Models.Situacao>)ViewBag.Situacoes).Any())
+                        {
+                            foreach (var situacao in ViewBag.Situacoes)
+                            {
+                                <option 
+                                    value="@situacao.SituacaoId" 
+                                    @(situacao.SituacaoId == Model.SituacaoId ? "selected" : "")
+                                >
+                                    @situacao.Nome
+                                </option>
+                            }
+                        }
+                        else
+                        {
+                            <option value="">Nenhuma situação encontrada</option> 
+                        }
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="problemasDeSaude">Problemas de Saúde</label>
+                <textarea class="form-control" placeholder="Descreva os problemas de saúde" name="ProblemasDeSaude">@Model.ProblemasDeSaude</textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="nutricao">Nutrição</label>
+                <textarea class="form-control" placeholder="Detalhes sobre nutrição" name="Nutricao">@Model.Nutricao</textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="alergia">Alergia</label>
+                <textarea class="form-control" placeholder="Descreva as alergias" name="Alergia">@Model.Alergia</textarea>
+            </div>
+
+            <div class="form-group">
+                <label for="cuidadosEspeciais">Cuidados Especiais</label>
+                <textarea class="form-control" placeholder="Descreva os cuidados especiais" name="CuidadosEspeciais">@Model.CuidadosEspeciais</textarea>
+            </div>
+
+            <button type="submit" class="btn btn-primary">Salvar</button>
+            <a href="/idoso/read" class="btn btn-secondary">Voltar</a>
+        </form>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
