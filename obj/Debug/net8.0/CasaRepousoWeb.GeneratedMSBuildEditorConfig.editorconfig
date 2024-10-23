@@ -9,27 +9,91 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = CasaRepousoWeb
 build_property.RootNamespace = CasaRepousoWeb
-build_property.ProjectDir = C:\casa-de-repouso-POO\
+build_property.ProjectDir = C:\Users\Aluno\CasaRepousoWeb\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\casa-de-repouso-POO
+build_property.MSBuildProjectDirectory = C:\Users\Aluno\CasaRepousoWeb
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/casa-de-repouso-POO/Views/Cuidadora/Login.cshtml]
+[C:/Users/Aluno/CasaRepousoWeb/Views/Ala/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxhXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Aluno/CasaRepousoWeb/Views/Ala/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxhXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Aluno/CasaRepousoWeb/Views/Ala/Read.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxhXFJlYWQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Aluno/CasaRepousoWeb/Views/Ala/Update.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxhXFVwZGF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Aluno/CasaRepousoWeb/Views/Cuidadora/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VpZGFkb3JhXExvZ2luLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/casa-de-repouso-POO/Views/Situacao/Create.cshtml]
+[C:/Users/Aluno/CasaRepousoWeb/Views/Endereco/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW5kZXJlY29cQ3JlYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Aluno/CasaRepousoWeb/Views/Endereco/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW5kZXJlY29cRGVsZXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Aluno/CasaRepousoWeb/Views/Endereco/Read.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW5kZXJlY29cUmVhZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Aluno/CasaRepousoWeb/Views/Endereco/Update.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW5kZXJlY29cVXBkYXRlLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Aluno/CasaRepousoWeb/Views/Medicacao/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVkaWNhY2FvXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Aluno/CasaRepousoWeb/Views/Medicacao/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVkaWNhY2FvXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Aluno/CasaRepousoWeb/Views/Medicacao/Read.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVkaWNhY2FvXFJlYWQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Aluno/CasaRepousoWeb/Views/Medicacao/Update.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVkaWNhY2FvXFVwZGF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Aluno/CasaRepousoWeb/Views/Pessoa/Create.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVzc29hXENyZWF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Aluno/CasaRepousoWeb/Views/Pessoa/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVzc29hXERlbGV0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Aluno/CasaRepousoWeb/Views/Pessoa/Read.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVzc29hXFJlYWQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Aluno/CasaRepousoWeb/Views/Pessoa/Update.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUGVzc29hXFVwZGF0ZS5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Aluno/CasaRepousoWeb/Views/Situacao/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2l0dWFjYW9cQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/casa-de-repouso-POO/Views/Situacao/Read.cshtml]
+[C:/Users/Aluno/CasaRepousoWeb/Views/Situacao/Read.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2l0dWFjYW9cUmVhZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/casa-de-repouso-POO/Views/Situacao/Update.cshtml]
+[C:/Users/Aluno/CasaRepousoWeb/Views/Situacao/Update.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2l0dWFjYW9cVXBkYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
