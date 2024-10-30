@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Aluno\\CasaRepousoWeb\\CasaRepousoWeb.csproj": {}
+    "C:\\casa-de-repouso-POO\\CasaRepousoWeb.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Aluno\\CasaRepousoWeb\\CasaRepousoWeb.csproj": {
+    "C:\\casa-de-repouso-POO\\CasaRepousoWeb.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Aluno\\CasaRepousoWeb\\CasaRepousoWeb.csproj",
+        "projectUniqueName": "C:\\casa-de-repouso-POO\\CasaRepousoWeb.csproj",
         "projectName": "CasaRepousoWeb",
-        "projectPath": "C:\\Users\\Aluno\\CasaRepousoWeb\\CasaRepousoWeb.csproj",
-        "packagesPath": "C:\\Users\\Aluno\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Aluno\\CasaRepousoWeb\\obj\\",
+        "projectPath": "C:\\casa-de-repouso-POO\\CasaRepousoWeb.csproj",
+        "packagesPath": "C:\\Users\\rafae\\.nuget\\packages\\",
+        "outputPath": "C:\\casa-de-repouso-POO\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Aluno\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\rafae\\AppData\\Roaming\\NuGet\\NuGet.Config"
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -81,7 +81,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.402/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.204/PortableRuntimeIdentifierGraph.json"
         }
       }
     }
