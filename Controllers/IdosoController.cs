@@ -97,7 +97,7 @@ public class IdosoController : Controller
 
     
     [HttpPost] 
-    public IActionResult Create(Idoso idoso) 
+    public IActionResult Create(Idoso idoso, IFormFile Imagem) 
     { 
         if (db.Idosos.Any(c => c.CPF == idoso.CPF))
         {
@@ -105,6 +105,30 @@ public class IdosoController : Controller
             ViewBag.Situacoes = db.Situacoes.ToList();
             ViewBag.Alas = db.Alas.ToList();
             return View(idoso);
+        }
+
+        if (Imagem != null && Imagem.Length > 0)
+        {
+            string directoryPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Imagens");
+
+            // Cria a pasta se não existir
+            if (!Directory.Exists(directoryPath))
+            {
+                Directory.CreateDirectory(directoryPath);
+            }
+
+            // Gerar um ID aleatório para a imagem
+            string idImagem = Guid.NewGuid().ToString();
+            string path = Path.Combine(directoryPath, $"{idImagem}.jpg");
+            
+            // Salvar a imagem no diretório
+            using (var stream = new FileStream(path, FileMode.Create))
+            {
+                Imagem.CopyTo(stream);
+            }
+
+            // Atribuir o ID da imagem ao campo IdImagem
+            idoso.IdImagem = idImagem;
         }
 
         db.Idosos.Add(idoso);
@@ -124,7 +148,7 @@ public class IdosoController : Controller
     }
 
     [HttpPost]
-    public ActionResult Update(int id, Idoso model)
+    public ActionResult Update(int id, Idoso model, IFormFile Imagem)
     {
         if (db.Idosos.Any(c => c.CPF == model.CPF && c.IdosoId != id))
         {
@@ -147,6 +171,24 @@ public class IdosoController : Controller
         idoso.Nutricao = model.Nutricao;
         idoso.Alergia = model.Alergia;
         idoso.CuidadosEspeciais = model.CuidadosEspeciais;
+
+         if (Imagem != null && Imagem.Length > 0)
+        {
+            string directoryPath = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot", "Imagens");
+            // Gerar um ID aleatório para a imagem
+            string idImagem = Guid.NewGuid().ToString();
+            string path = Path.Combine(directoryPath, $"{idImagem}.jpg");
+
+            // Salvar a imagem no diretório
+            using (var stream = new FileStream(path, FileMode.Create))
+            {
+                Imagem.CopyTo(stream);
+            }
+
+            // Atribuir o ID da imagem ao campo IdImagem
+            idoso.IdImagem = idImagem;
+        }
+
 
         // Salvando as alterações no banco de dados
         db.SaveChanges();

@@ -27,6 +27,8 @@ app.UseSession();
 app.UseAuthentication();
 app.UseAuthorization();
 
+app.UseStaticFiles(); // Para servir arquivos da wwwroot
+
 app.MapControllerRoute("default", "/{controller=Cuidadora}/{action=Login}/{id?}");
 
 // define a rota padrão

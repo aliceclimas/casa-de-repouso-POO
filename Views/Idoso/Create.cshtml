@@ -2,46 +2,49 @@
 @using CasaRepousoWeb.Models
 
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-br">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Criar Nova Situação</title>
+    <title>Cadastrar Idoso</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <div class="container mt-5">
-        <h2>Cadastrar Idoso</h2>
-        <form action="/idoso/Create" method="post">
+    <div class="container mt-5 mb-5">
+        <h2 class="text-center">Cadastro de Idoso</h2>
+        <p class="text-muted text-center mb-4">Preencha todos os campos obrigatórios para registrar o idoso no sistema.</p>
+        
+        <form action="/idoso/Create" method="post" enctype="multipart/form-data">
             @Html.AntiForgeryToken()
-            <div class="form-group row">
-                <div class="col-md-6">
-                    <label for="nome">Nome</label>
-                    <input type="text" class="form-control" placeholder="Nome" name="Nome" required>
+            
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="nome">Nome <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" placeholder="Digite o nome" name="Nome" required>
                 </div>
-                <div class="col-md-6">
-                    <label for="sobrenome">Sobrenome</label>
-                    <input type="text" class="form-control" placeholder="Sobrenome" name="Sobrenome" required>
+                <div class="form-group col-md-6">
+                    <label for="sobrenome">Sobrenome <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" placeholder="Digite o sobrenome" name="Sobrenome" required>
                 </div>
             </div>
-
-            <div class="form-group row">
-                <div class="col-md-6">
-                    <label for="cpf">CPF</label>
-                    <input type="text" class="form-control" placeholder="CPF" name="cpf" required pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" title="Formato: 000.000.000-00">
+            
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="cpf">CPF <span class="text-danger">*</span></label>
+                    <input type="text" class="form-control" placeholder="000.000.000-00" name="cpf" required pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" title="Formato: 000.000.000-00">
                     @Html.ValidationMessageFor(model => model.CPF, "", new { @class = "text-danger" })
                 </div>
-                <div class="col-md-6">
-                    <label for="dataNascimento">Data de Nascimento</label>
+                <div class="form-group col-md-6">
+                    <label for="dataNascimento">Data de Nascimento <span class="text-danger">*</span></label>
                     <input type="date" class="form-control" name="dataNascimento" required>
                 </div>
             </div>
-
-            <div class="form-group row">
-                <div class="col-md-6">
-                    <label for="ala">Ala</label>
+            
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label for="ala">Ala <span class="text-danger">*</span></label>
                     <select class="form-control" name="AlaId" required>
-                        <option value="">Filtrar por Ala</option>
+                        <option value="">Selecione a Ala</option>
                         @if (ViewBag.Alas != null && ((IEnumerable<CasaRepousoWeb.Models.Ala>)ViewBag.Alas).Any()) 
                         {
                             foreach (var ala in ViewBag.Alas)
@@ -55,10 +58,10 @@
                         }
                     </select>
                 </div>
-                <div class="col-md-6">
-                    <label for="situacao">Situação</label>
+                <div class="form-group col-md-6">
+                    <label for="situacao">Situação <span class="text-danger">*</span></label>
                     <select class="form-control" name="SituacaoId" required>
-                        <option value="">Filtrar por Situação</option>
+                        <option value="">Selecione a Situação</option>
                         @if (ViewBag.Situacoes != null && ((IEnumerable<CasaRepousoWeb.Models.Situacao>)ViewBag.Situacoes).Any())
                         {
                             foreach (var situacao in ViewBag.Situacoes)
@@ -73,31 +76,36 @@
                     </select>
                 </div>
             </div>
-
+            
             <div class="form-group">
                 <label for="problemasDeSaude">Problemas de Saúde</label>
-                <textarea class="form-control" placeholder="Descreva os problemas de saúde" name="ProblemasDeSaude" ></textarea>
+                <textarea class="form-control" placeholder="Descreva os problemas de saúde, se houver" name="ProblemasDeSaude"></textarea>
             </div>
-
+            
             <div class="form-group">
                 <label for="nutricao">Nutrição</label>
-                <textarea class="form-control" placeholder="Detalhes sobre nutrição" name="Nutricao" ></textarea>
+                <textarea class="form-control" placeholder="Informe detalhes sobre a nutrição" name="Nutricao"></textarea>
             </div>
-
+            
             <div class="form-group">
                 <label for="alergia">Alergia</label>
-                <textarea class="form-control" placeholder="Descreva as alergias" name="Alergia" ></textarea>
+                <textarea class="form-control" placeholder="Descreva as alergias, se houver" name="Alergia"></textarea>
             </div>
-
+            
             <div class="form-group">
                 <label for="cuidadosEspeciais">Cuidados Especiais</label>
-                <textarea class="form-control" placeholder="Descreva os cuidados especiais" name="CuidadosEspeciais" ></textarea>
+                <textarea class="form-control" placeholder="Descreva cuidados especiais" name="CuidadosEspeciais"></textarea>
             </div>
-
-
-
-            <button type="submit" class="btn btn-success">Cadastrar</button>
-            <a href="/idoso/read" class="btn btn-secondary">Voltar</a>
+            
+            <div class="form-group">
+                <label for="imagem">Imagem do Idoso</label>
+                <input type="file" class="form-control-file" name="Imagem" accept="image/*">
+            </div>
+            
+            <div class="text-center mt-4">
+                <button type="submit" class="btn btn-success btn-lg">Cadastrar</button>
+                <a href="/idoso/read" class="btn btn-secondary btn-lg ml-2">Voltar</a>
+            </div>
         </form>
     </div>
 

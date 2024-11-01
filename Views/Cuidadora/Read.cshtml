@@ -10,56 +10,75 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         body {
-            background-color: #f8f9fa;
+            background-color: #f0f2f5;
         }
         .container {
+            max-width: 600px;
             background: white;
             border-radius: 10px;
-            padding: 20px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
         }
         h2 {
+            font-weight: bold;
+            color: #333;
             margin-bottom: 20px;
+            text-align: center;
+        }
+        .profile-info {
+            font-size: 1.1em;
+            margin-bottom: 15px;
+        }
+        .profile-info strong {
+            color: #555;
+        }
+        .btn-group {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .btn-primary, .btn-secondary {
+            min-width: 120px;
         }
     </style>
 </head>
 <body>
     <div class="container mt-5">
         <h2>Perfil da Cuidadora</h2>
-        <div class="form-group">
-            <label><strong>Nome:</strong> @Model.Nome</label>
+        <div class="profile-info">
+            <strong>Nome:</strong> @Model.Nome
+        </div>
+        <div class="profile-info">
+            <strong>Sobrenome:</strong> @Model.Sobrenome
+        </div>
+        <div class="profile-info">
+            <strong>CPF:</strong> @Model.CPF
+        </div>
+        <div class="profile-info">
+            <strong>Telefone:</strong> @(string.IsNullOrWhiteSpace(Model.Telefone) ? "Não definido" : Model.Telefone)
+        </div>
+        <div class="profile-info">
+            <strong>Horário de Entrada:</strong> @(Model.HorarioEntrada.HasValue ? Model.HorarioEntrada.Value.ToString(@"hh\:mm") : "Não definido")
+        </div>
+        <div class="profile-info">
+            <strong>Horário de Saída:</strong> @(Model.HorarioSaida.HasValue ? Model.HorarioSaida.Value.ToString(@"hh\:mm") : "Não definido")
+        </div>
+        <div class="profile-info">
+            <strong>Email:</strong> @Model.Email
+        </div>
+        <div class="profile-info">
+            <strong>Ala:</strong> @(Model.Ala?.Nome ?? "Não atribuído")
         </div>
 
-        <div class="form-group">
-            <label><strong>Sobrenome: </strong> @Model.Sobrenome</label>
+        <div class="btn-group">
+            <a href="/Cuidadora/Update/@Model.CuidadoraId" class="btn btn-primary">
+                <i class="fas fa-edit"></i> Editar Perfil
+            </a>
+            <a href="/Idoso/Read" class="btn btn-secondary">
+                <i class="fas fa-arrow-left"></i> Voltar
+            </a>
         </div>
-
-        <div class="form-group">
-            <label><strong>CPF:</strong> @Model.CPF</label>
-        </div>
-
-        <div class="form-group">
-            <label><strong>Telefone:</strong> @(string.IsNullOrWhiteSpace(Model.Telefone) ? "Não definido" : Model.Telefone)</label>
-        </div>
-
-        <div class="form-group">
-            <label><strong>Horário de Entrada: </strong> @(Model.HorarioEntrada.HasValue ? Model.HorarioEntrada.Value.ToString(@"hh\:mm") : "Não definido")</label>
-        </div>
-
-        <div class="form-group">
-            <label><strong>Horário de Saída: </strong> @(Model.HorarioSaida.HasValue ? Model.HorarioSaida.Value.ToString(@"hh\:mm") : "Não definido")</label>
-        </div>
-
-        <div class="form-group">
-            <label><strong>Email: </strong>@Model.Email </label>
-        </div>
-
-        <div class="form-group">
-            <label><strong>Ala: </strong>@Model.Ala?.Nome</label>
-        </div>
-
-        <a href="/Cuidadora/Update/@Model.CuidadoraId" class="btn btn-primary">Editar Perfil</a>
-        <a href="/Idoso/Read" class="btn btn-secondary">Voltar</a>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>

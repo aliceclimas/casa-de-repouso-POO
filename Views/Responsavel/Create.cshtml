@@ -1,12 +1,11 @@
 @model CasaRepousoWeb.Models.Responsavel
 
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastrar responsavel</title>
+    <title>Cadastrar Responsável</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
@@ -14,29 +13,42 @@
         <h2>Cadastrar Novo Responsável</h2>
         <form asp-action="Create" method="post">
             <input type="hidden" name="ResponsavelId" value="@ViewBag.ResponsavelId" />
-            <div class="form-group">
-                <label for="Nome">Nome</label>
-                <input type="text" class="form-control" id="Nome" name="Nome" required />
+            
+            <div class="form-group row">
+                <div class="col-md-6">
+                    <label for="Nome">Nome</label>
+                    <input type="text" class="form-control" id="Nome" name="Nome" placeholder="Nome" required />
+                </div>
+                <div class="col-md-6">
+                    <label for="Sobrenome">Sobrenome</label>
+                    <input type="text" class="form-control" id="Sobrenome" name="Sobrenome" placeholder="Sobrenome" required />
+                </div>
             </div>
-            <div class="form-group">
-                <label for="Sobrenome">Sobrenome</label>
-                <input type="text" class="form-control" id="Sobrenome" name="Sobrenome" required />
+
+            <div class="form-group row">
+                <div class="col-md-6">
+                    <label for="CPF">CPF</label>
+                    <input type="text" class="form-control" id="CPF" name="CPF" placeholder="000.000.000-00" required pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" title="Formato: 000.000.000-00" />
+                </div>
+                <div class="col-md-6">
+                    <label for="Telefone">Telefone</label>
+                    <input type="text" class="form-control" id="Telefone" name="Telefone" placeholder="(00) 00000-0000" required pattern="\(\d{2}\) \d{5}-\d{4}" title="Formato: (00) 00000-0000" />
+                </div>
             </div>
+
             <div class="form-group">
-                <label for="CPF">CPF</label>
-                <input type="text" class="form-control" id="CPF" name="CPF" required pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" title="Formato: 000.000.000-00" >
+                <label for="Email">E-mail</label>
+                <input type="email" class="form-control" id="Email" name="Email" placeholder="email@exemplo.com" />
             </div>
-            <div class="form-group">
-                <label for="Telefone">Telefone</label>
-                <input type="text" class="form-control" id="Telefone" name="Telefone" required />
+
+            <div class="form-group d-flex justify-content-between">
+                <button type="submit" class="btn btn-success">Salvar</button>
+                <a href="/responsavel/read/@ViewBag.IdosoId" class="btn btn-secondary">Voltar</a>
             </div>
-            <div class="form-group">
-                <label for="Email">Email</label>
-                <input type="text" class="form-control" id="Email" name="Email"  />
-            </div>
-            <button type="submit" class="btn btn-primary">Salvar</button>
-            <a href="/responsavel/read/@ViewBag.IdosoId" class="btn btn-secondary">Voltar</a>
         </form>
     </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 </html>
