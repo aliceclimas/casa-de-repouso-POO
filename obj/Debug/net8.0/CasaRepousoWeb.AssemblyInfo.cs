@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CasaRepousoWeb")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+028a5809f8383cf45be8d0a701f73c6e266f733b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+09578e5e208f23154e2c62b2ed20fe37b30c5f62")]
 [assembly: System.Reflection.AssemblyProductAttribute("CasaRepousoWeb")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CasaRepousoWeb")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
