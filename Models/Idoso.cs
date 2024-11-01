@@ -13,6 +13,7 @@ public class Idoso
     public string? Nutricao { get; set; }
     public string? Alergia { get; set; }
     public string? CuidadosEspeciais { get; set; }
+    public string? IdImagem { get; set; }
 
     // Relacionamentos
     public Ala Ala { get; set; }

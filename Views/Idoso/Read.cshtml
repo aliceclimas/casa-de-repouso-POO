@@ -6,104 +6,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Página de Navegação - Idosos</title>
+    <title>Casa de Repouso - Lista de Idosos</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body {
-            background-color: #f8f9fa;
-        }
-        .navbar {
-            background-color: #007bff;
-        }
-        .navbar-brand {
-            font-weight: bold;
-        }
-        .navbar-nav .nav-link {
-            color: white !important;
-            font-weight: 500;
-        }
-        .navbar-nav .nav-link:hover {
-            color: #ddd !important;
-        }
-        .search-bar {
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .search-bar input, .search-bar select {
-            margin-right: 10px;
-            flex: 1;
-            min-width: 120px;
-        }
-        .idoso-card {
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            padding: 15px;
-            margin-bottom: 15px;
-            background-color: white;
-            transition: transform 0.2s;
-        }
-        .idoso-card:hover {
-            transform: scale(1.02);
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-        .idoso-info {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        .idoso-circle {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            display: inline-block;
-        }
-        .idoso-details {
-            display: none;
-            padding-top: 10px;
-            border-top: 1px solid #ddd;
-            margin-top: 10px;
-        }
-        .btn-info {
-            background-color: #17a2b8;
-            border: none;
-        }
-        .btn-outline-primary {
-            margin-right: 5px;
-        }
+        body { background-color: #f8f9fa; }
+        .navbar { background-color: #007bff; }
+        .navbar-brand { font-weight: bold; color: #fff !important; }
+        .navbar-nav .nav-link { color: #f1f1f1 !important; }
+        .navbar-nav .nav-link:hover { color: #ddd !important; }
+        .search-bar { margin-bottom: 20px; }
+        .idoso-card { border: 1px solid #ddd; border-radius: 5px; padding: 15px; margin-bottom: 15px; background-color: white; transition: transform 0.2s; }
+        .idoso-card:hover { transform: scale(1.02); box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); }
+        .idoso-info { display: flex; justify-content: space-between; align-items: center; }
+        .idoso-details { display: none; padding-top: 10px; border-top: 1px solid #ddd; margin-top: 10px; }
+        .idoso-image { width: 80px; height: 80px; object-fit: cover; border-radius: 50%; }
+        .idoso-circle { width: 15px; height: 15px; border-radius: 50%; display: inline-block; margin-right: 10px; }
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-lg navbar-dark">
+    <nav class="navbar navbar-expand-lg">
         <div class="container">
-            <a class="navbar-brand" href="#">Casa Repouso - Usuario: @ViewBag.Cuidadoras.Nome</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <a class="navbar-brand" href="#">Casa de Repouso - Usuário: @ViewBag.Cuidadoras.Nome</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="/situacao/read">Situações</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/ala/read">Alas</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" data-toggle="modal" data-target="#cadastrarModal">Cadastrar</a>
-                    </li>
+                    <li class="nav-item"><a class="nav-link" href="/situacao/read">Situações</a></li>
+                    <li class="nav-item"><a class="nav-link" href="/ala/read">Alas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#" data-toggle="modal" data-target="#cadastrarModal">Cadastrar</a></li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fas fa-user"></i>
-                        </a>
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown"><i class="fas fa-user"></i></a>
+                        <div class="dropdown-menu dropdown-menu-right">
                             <a class="dropdown-item" href="/Cuidadora/Read">Ver Perfil</a>
                             <div class="dropdown-divider"></div>
-                            @* <form id="logoutForm" asp-controller="Cuidadora" asp-action="Logout" method="post">
-                                @Html.AntiForgeryToken()
-                                <button type="submit" class="dropdown-item">Sair</button>
-                            </form> *@
                             <form id="logoutForm" method="post" action="@Url.Action("Logout", "Cuidadora")">
                                 @Html.AntiForgeryToken()
                                 <input type="submit" value="Sair" class="dropdown-item" />
@@ -115,15 +52,12 @@
         </div>
     </nav>
 
-    <!-- Modal de Cadastrar -->
-    <div class="modal fade" id="cadastrarModal" tabindex="-1" aria-labelledby="cadastrarModalLabel" aria-hidden="true">
+    <div class="modal fade" id="cadastrarModal" tabindex="-1" aria-labelledby="cadastrarModalLabel">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="cadastrarModalLabel">Cadastrar</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Fechar">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
+                    <h5 class="modal-title">Cadastrar</h5>
+                    <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
                 </div>
                 <div class="modal-body text-center">
                     <h6>Escolha uma opção:</h6>
@@ -134,45 +68,42 @@
         </div>
     </div>
 
-    <!-- Conteúdo principal da página -->
+   
     <div class="container mt-5">
-        <form method="get" action="/idoso/read">
-            <div class="search-bar">
+        <form method="get" action="/idoso/read" class="search-bar">
+            <div class="input-group">
                 <input type="text" class="form-control" placeholder="Buscar por nome" name="nome">
                 <select name="ala" class="form-control">
                     <option value="">Filtrar por Ala</option>
-                    @if (ViewBag.Alas != null && ((IEnumerable<CasaRepousoWeb.Models.Ala>)ViewBag.Alas).Any()) 
+                    @foreach (var ala in (IEnumerable<CasaRepousoWeb.Models.Ala>)ViewBag.Alas ?? Enumerable.Empty<CasaRepousoWeb.Models.Ala>())
                     {
-                        foreach (var ala in ViewBag.Alas)
-                        {
-                            <option value="@ala.AlaId">@ala.Nome</option>
-                        }
-                    }
-                    else
-                    {
-                        <option value="">Nenhuma ala encontrada</option> 
+                        <option value="@ala.AlaId">@ala.Nome</option>
+                        
                     }
                 </select>
-                <select name="situacao" class="form-control">
+                @* <select name="situacao" class="form-control">
                     <option value="">Filtrar por Situação</option>
-                    @if (ViewBag.Situacoes != null && ((IEnumerable<CasaRepousoWeb.Models.Situacao>)ViewBag.Situacoes).Any())
+                    @foreach (var situacao in (IEnumerable<CasaRepousoWeb.Models.Situacao>)ViewBag.Situacoes ?? Enumerable.Empty<CasaRepousoWeb.Models.Situacao>())
                     {
-                        foreach (var situacao in ViewBag.Situacoes)
-                        {
-                            <option value="@situacao.SituacaoId">@situacao.Nome</option>
-                        }
+                        <option value="@situacao.SituacaoId" style="color: @situacao.Cor;">@situacao.Nome</option>
                     }
-                    else
+                </select> *@
+                <select name="situacao" class="form-control" id="situacaoSelect">
+                    <option value="">Filtrar por Situação</option>
+                    @foreach (var situacao in (IEnumerable<CasaRepousoWeb.Models.Situacao>)ViewBag.Situacoes ?? Enumerable.Empty<CasaRepousoWeb.Models.Situacao>())
                     {
-                        <option value="">Nenhuma situação encontrada</option> 
+                        <option value="@situacao.SituacaoId" data-color="@situacao.Cor">@situacao.Nome</option>
                     }
                 </select>
-                <button type="submit" class="btn btn-primary">Buscar</button>
-                <a href="/idoso/read" class="btn btn-secondary">Limpar Filtros</a>
+
+                
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-primary">Buscar</button>
+                    <a href="/idoso/read" class="btn btn-secondary ml-1">Limpar</a>
+                </div>
             </div>
         </form>
 
-        <!-- Listagem dos idosos -->
         @if (ViewBag.Idosos != null && ((IEnumerable<dynamic>)ViewBag.Idosos).Any())
         {
             @foreach (var item in ViewBag.Idosos)
@@ -180,18 +111,22 @@
                 <div class="idoso-card">
                     <div class="idoso-info">
                         <div>
+                            @{
+                                var imagePath = string.IsNullOrEmpty(item.Idoso.IdImagem) ? "~/img/Sem_imagem.jpg" : $"~/Imagens/{item.Idoso.IdImagem}.jpg";
+                            }
+                            <img src="@Url.Content(imagePath)" alt="Foto do idoso" class="idoso-image">
                             <span class="idoso-circle" style="background-color: @item.Idoso.Situacao.Cor;"></span>
-                            @item.Idoso.Nome - @item.Idade anos - @item.Idoso.Ala.Nome
+                            <strong>@item.Idoso.Nome</strong> - @item.Idade anos - Ala: @item.Idoso.Ala.Nome
                         </div>
                         <div>
-                            <a href="/idoso/update/@item.Idoso.IdosoId" class="btn btn-sm btn-warning">Editar</a>
-                            <a href="/idoso/delete/@item.Idoso.IdosoId" class="btn btn-sm btn-danger">Excluir</a>
-                            <button class="btn btn-sm btn-info" onclick="toggleDetails(this)">Mais detalhes</button>
+                            <a href="/idoso/update/@item.Idoso.IdosoId" class="btn btn-warning btn-sm">Editar</a>
+                            <a href="/idoso/delete/@item.Idoso.IdosoId" class="btn btn-danger btn-sm">Excluir</a>
+                            <button class="btn btn-info btn-sm" onclick="toggleDetails(this)">Mais detalhes</button>
                         </div>
                     </div>
                     <div class="idoso-details">
-                        <p><strong>CPF:</strong> @item.Idoso.CPF</p>
-                        <p><strong>Problemas de saúde:</strong> @item.Idoso.ProblemasDeSaude</p>
+                        <p><strong>CPF:</strong> @item.Idoso.CPF   <strong>Data de Nascimento:</strong> @item.Idoso.DataNascimento.ToString("dd/MM/yyyy")</p>
+                        <p><strong>Problemas de Saúde:</strong> @item.Idoso.ProblemasDeSaude</p>
                         <p><strong>Nutrição:</strong> @item.Idoso.Nutricao</p>
                         <p><strong>Alergia:</strong> @item.Idoso.Alergia</p>
                         <p><strong>Cuidados Especiais:</strong> @item.Idoso.CuidadosEspeciais</p>
@@ -207,7 +142,7 @@
         else
         {
             <p class="text-center">Nenhum idoso encontrado.</p>
-        } 
+        }
 
     <script>
         function toggleDetails(button) {
@@ -215,8 +150,25 @@
             details.style.display = details.style.display === 'none' || details.style.display === '' ? 'block' : 'none';
         }
     </script>
-
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <style>
+        .situacao-item {
+            display: flex;
+            align-items: center; /* Alinha verticalmente o texto e a bolinha */
+            margin-bottom: 5px; /* Espaçamento entre os itens */
+        }
+
+        .idoso-circle {
+            display: inline-block;
+            width: 15px; /* Ajuste o tamanho da bolinha */
+            height: 15px; /* Ajuste o tamanho da bolinha */
+            border-radius: 50%; /* Faz a bolinha ser circular */
+            margin-right: 8px; /* Espaçamento entre a bolinha e o texto */
+        }
+    </style>
 </body>
 </html>
