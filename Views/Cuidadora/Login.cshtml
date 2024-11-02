@@ -57,30 +57,6 @@
         label {
             margin: 0;
         }
-
-        .input-group {
-            position: relative;
-            display: flex;
-        }
-
-        .input-group .form-control {
-            flex: 1;
-            padding-right: 40px; 
-            border-radius: 0.25rem;
-        }
-
-        .input-group .btn {
-            position: absolute;
-            right: 0px;
-            top: 50%;
-            transform: translateY(-50%);
-            border: none; 
-            background: transparent; 
-            cursor: pointer; 
-            z-index: 20;
-            border-radius: 0.25rem;
-        }
-
     </style>
 </head>
 <body>
@@ -98,8 +74,8 @@
             <section class="form-group">
                 <label for="senha">Senha</label>
                 <section class="input-group">
-                    <input type="password" class="form-control" id="senha" name="senha" required>
-                    <button id="eye-button" class="btn" type="button" onclick="togglePasswordVisibility()">
+                    <input type="password" class="form-control" id="senha" name="senha" required style="border-radius: 0.25em;">
+                    <button id="eye-button" class="btn" type="button" onclick="togglePasswordVisibility()" style="position: absolute; right: 0;">
                         <i class="fas fa-eye" id="togglePasswordIcon"></i>
                     </button>
                 </section>
