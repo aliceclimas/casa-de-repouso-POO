@@ -9,10 +9,6 @@ Projeto interdisciplinar desenvolvido para a disciplina Programação Orientada 
 - Relacionamento de N:N (formulários ou relatórios);
 - Pesquisas e filtros nos dados;
 
-## ⚙️ Atualizações que poderiam ser feitas
-- Validação do CPF
-- Deixar todos os campos obrigatórios antes de enviar para o banco sem dar erro
-
 
 dotnet ef migrations add InitialCreate
 dotnet ef database update
