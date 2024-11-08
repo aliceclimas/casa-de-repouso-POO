@@ -3,77 +3,140 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login - Cuidadora</title>
+    <title>Serene</title>
     <!-- Incluindo Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <!-- Incluindo Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f5f5f5;
+            font-family: "Poppins", sans-serif;
+            background-color: #fff;
             display: flex;
             justify-content: center;
             align-items: center;
             height: 100vh;
             margin: 0;
+            position: relative;
         }
 
         .login-container {
-            background: #ffffff;
+            position: absolute;
+            right: 0;
+            background: #0a0826; 
+            width: 600px;
+            height: 100%;
+            flex-shrink: 0;
+            border-radius: 100px 0px 0px 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column; 
             padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 400px;
+            box-sizing: border-box;
         }
 
         .login-container h2 {
-            margin-bottom: 20px;
+            margin-bottom: 5px;
             text-align: center;
-            color: #333;
+            color: #fff;
+        }
+        
+        label {
+            width: 80%;
+            margin: 0;
+            color: #fff;
+        }
+
+        #submit {
+            margin-top: 20px;
+            height: 45px;
         }
 
         .login-container a {
             display: block;
+            width: 50%;
             text-align: center;
             margin-top: 10px;
-            color: #555;
+            color: #fff;
             text-decoration: none;
         }
 
         .login-container a:hover {
-            color: #000;
+            color: #ccdbe6;
+        }
+
+        .welcome-container {
+            position: absolute;
+            left: 0;
+            width: 50%;
+            height: 100%;
+            flex-shrink: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column; 
+            padding: 20px;
+            box-sizing: border-box;
+            margin-left: 50px;
+        }
+
+        .welcome-container h2 {
+            margin-bottom: 10px;
+            text-align: center;
+            color: #0a0826;
+        }
+
+        .welcome-content {
+            padding: 0 60px 60px 60px;
+            text-align: center;
+            font-size: 15px;
+        }
+        .img-logo {
+            width: 100px;
+            margin-bottom: 10px;
         }
     </style>
 </head>
 <body>
-    <div class="login-container">
-        <h2>Login - Cuidadora</h2>
-        
+    @* cor #ccdbe6 - azul claro *@
+    <section class="login-container">
+        <figure>
+            <img src="@Url.Content( "~/img/chrysanthemum.png")" class="img-logo">
+        </figure>
+        @* <h2>Serene</h2>  *@
         <form action="/Cuidadora/Login" method="post">
-            <div class="form-group">
+            <section class="form-group">
                 <label for="email">Email</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
-            </div>
-            <div class="form-group">
+                <input type="email" class="form-control" id="email" name="email" placeholder="exemplo@email.com" required style="width: 350px; height: 45px">
+            </section>
+            <section class="form-group">
                 <label for="senha">Senha</label>
-                <div class="input-group">
-                    <input type="password" class="form-control" id="senha" name="senha" placeholder="Senha" required>
-                    <div class="input-group-append">
-                        <button class="btn btn-outline-secondary" type="button" onclick="togglePasswordVisibility()">
-                            <i class="fas fa-eye" id="togglePasswordIcon"></i>
-                        </button>
-                    </div>
-                </div>
-            </div>
-            <button type="submit" class="btn btn-primary btn-block">Entrar</button>
+                <section class="input-group">
+                    <input type="password" class="form-control" id="senha" name="senha" required style="border-radius: 0.25em; height: 45px">
+                    <button id="eye-button" class="btn" type="button" onclick="togglePasswordVisibility()" style="position: absolute; right: 0; z-index: 20; height: 45px">
+                        <i class="fas fa-eye" id="togglePasswordIcon"></i>
+                    </button>
+                </section>
+            </section>
+            <button type="submit" id="submit" class="btn btn-primary btn-block">Entrar</button>
             @if(ViewBag.Autenticado != null && ViewBag.Autenticado == false) {
-                <div class="alert alert-danger">Usuário não reconhecido ou senha inválida.</div>
+                <section class="alert alert-danger">Usuário não reconhecido ou senha inválida.</section>
             }
         </form>
-        <a href="@Url.Action("Create", "Cuidadora")" class="btn btn-info">Criar Conta</a>
-    </div>
+        <a href="@Url.Action("Create", "Cuidadora")"><u>Cadastrar</u></a>
+    </section>
+    <section class="welcome-container">
+        <h2> Bem-vindo ao Serene! </h2>
+        <section class="welcome-content">
+        <p> 
+            Faça login para acessar um ambiente dedicado ao bem-estar e à calmaria no gerenciamento.
+        </p>
+        </section>
+    </section>
     <!-- Incluindo Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>

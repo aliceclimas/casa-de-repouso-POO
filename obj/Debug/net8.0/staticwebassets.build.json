@@ -1,11 +1,39 @@
 {
   "Version": 1,
-  "Hash": "YUV3ou+oj8HiTqszLxlEirHOYHy477CbXJ6uRKLa2ps=",
+  "Hash": "C2rTGhe+MUOYA2z3ptAc3SgPnoCp6RJ3/jaEHvgYjpo=",
   "Source": "CasaRepousoWeb",
   "BasePath": "_content/CasaRepousoWeb",
   "Mode": "Default",
   "ManifestType": "Build",
   "ReferencedProjectsConfiguration": [],
-  "DiscoveryPatterns": [],
-  "Assets": []
+  "DiscoveryPatterns": [
+    {
+      "Name": "CasaRepousoWeb\\wwwroot",
+      "Source": "CasaRepousoWeb",
+      "ContentRoot": "C:\\Users\\Admin\\Documents\\GitHub\\casa-de-repouso-POO\\wwwroot\\",
+      "BasePath": "_content/CasaRepousoWeb",
+      "Pattern": "**"
+    }
+  ],
+  "Assets": [
+    {
+      "Identity": "C:\\Users\\Admin\\Documents\\GitHub\\casa-de-repouso-POO\\wwwroot\\img\\chrysanthemum.png",
+      "SourceId": "CasaRepousoWeb",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Admin\\Documents\\GitHub\\casa-de-repouso-POO\\wwwroot\\",
+      "BasePath": "_content/CasaRepousoWeb",
+      "RelativePath": "img/chrysanthemum.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\img\\chrysanthemum.png"
+    }
+  ]
 }
