@@ -81,6 +81,7 @@
             flex-direction: column; 
             padding: 20px;
             box-sizing: border-box;
+            margin-left: 50px;
         }
 
         .welcome-container h2 {
@@ -94,15 +95,19 @@
             text-align: center;
             font-size: 15px;
         }
+        .img-logo {
+            width: 100px;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
     @* cor #ccdbe6 - azul claro *@
     <section class="login-container">
         <figure>
-            <img src="@Url.Content("~/img/chrysanthemum.png")">
+            <img src="@Url.Content( "~/img/chrysanthemum.png")" class="img-logo">
         </figure>
-        <h2>Serene</h2> 
+        @* <h2>Serene</h2>  *@
         <form action="/Cuidadora/Login" method="post">
             <section class="form-group">
                 <label for="email">Email</label>
@@ -125,7 +130,7 @@
         <a href="@Url.Action("Create", "Cuidadora")"><u>Cadastrar</u></a>
     </section>
     <section class="welcome-container">
-        <h2> Bem-vindo! </h2>
+        <h2> Bem-vindo ao Serene! </h2>
         <section class="welcome-content">
         <p> 
             Faça login para acessar um ambiente dedicado ao bem-estar e à calmaria no gerenciamento.
