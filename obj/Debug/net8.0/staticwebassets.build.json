@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "C2rTGhe+MUOYA2z3ptAc3SgPnoCp6RJ3/jaEHvgYjpo=",
+  "Hash": "ZVXdbROgfuSCB1bNqkhvsCLUDxhnicgZNBKyn0WOUJo=",
   "Source": "CasaRepousoWeb",
   "BasePath": "_content/CasaRepousoWeb",
   "Mode": "Default",
@@ -10,17 +10,17 @@
     {
       "Name": "CasaRepousoWeb\\wwwroot",
       "Source": "CasaRepousoWeb",
-      "ContentRoot": "C:\\Users\\Admin\\Documents\\GitHub\\casa-de-repouso-POO\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Administrador\\Documents\\GitHub\\casa-de-repouso-POO\\wwwroot\\",
       "BasePath": "_content/CasaRepousoWeb",
       "Pattern": "**"
     }
   ],
   "Assets": [
     {
-      "Identity": "C:\\Users\\Admin\\Documents\\GitHub\\casa-de-repouso-POO\\wwwroot\\img\\chrysanthemum.png",
+      "Identity": "C:\\Users\\Administrador\\Documents\\GitHub\\casa-de-repouso-POO\\wwwroot\\img\\chrysanthemum.png",
       "SourceId": "CasaRepousoWeb",
       "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Admin\\Documents\\GitHub\\casa-de-repouso-POO\\wwwroot\\",
+      "ContentRoot": "C:\\Users\\Administrador\\Documents\\GitHub\\casa-de-repouso-POO\\wwwroot\\",
       "BasePath": "_content/CasaRepousoWeb",
       "RelativePath": "img/chrysanthemum.png",
       "AssetKind": "All",

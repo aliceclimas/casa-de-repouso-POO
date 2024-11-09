@@ -9,107 +9,107 @@ build_property.EnforceExtendedAnalyzerRules =
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = CasaRepousoWeb
 build_property.RootNamespace = CasaRepousoWeb
-build_property.ProjectDir = C:\Users\Admin\Documents\GitHub\casa-de-repouso-POO\
+build_property.ProjectDir = C:\Users\Administrador\Documents\GitHub\casa-de-repouso-POO\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = C:\Users\Admin\Documents\GitHub\casa-de-repouso-POO
+build_property.MSBuildProjectDirectory = C:\Users\Administrador\Documents\GitHub\casa-de-repouso-POO
 build_property._RazorSourceGeneratorDebug = 
 
-[C:/Users/Admin/Documents/GitHub/casa-de-repouso-POO/Views/Ala/Create.cshtml]
+[C:/Users/Administrador/Documents/GitHub/casa-de-repouso-POO/Views/Ala/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxhXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Documents/GitHub/casa-de-repouso-POO/Views/Ala/Read.cshtml]
+[C:/Users/Administrador/Documents/GitHub/casa-de-repouso-POO/Views/Ala/Read.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxhXFJlYWQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Documents/GitHub/casa-de-repouso-POO/Views/Ala/Update.cshtml]
+[C:/Users/Administrador/Documents/GitHub/casa-de-repouso-POO/Views/Ala/Update.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWxhXFVwZGF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Documents/GitHub/casa-de-repouso-POO/Views/Cuidadora/Create.cshtml]
+[C:/Users/Administrador/Documents/GitHub/casa-de-repouso-POO/Views/Cuidadora/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VpZGFkb3JhXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Documents/GitHub/casa-de-repouso-POO/Views/Cuidadora/Login.cshtml]
+[C:/Users/Administrador/Documents/GitHub/casa-de-repouso-POO/Views/Cuidadora/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VpZGFkb3JhXExvZ2luLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Documents/GitHub/casa-de-repouso-POO/Views/Cuidadora/Read.cshtml]
+[C:/Users/Administrador/Documents/GitHub/casa-de-repouso-POO/Views/Cuidadora/Read.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VpZGFkb3JhXFJlYWQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Documents/GitHub/casa-de-repouso-POO/Views/Cuidadora/Update.cshtml]
+[C:/Users/Administrador/Documents/GitHub/casa-de-repouso-POO/Views/Cuidadora/Update.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VpZGFkb3JhXFVwZGF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Documents/GitHub/casa-de-repouso-POO/Views/Endereco/Create.cshtml]
+[C:/Users/Administrador/Documents/GitHub/casa-de-repouso-POO/Views/Endereco/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW5kZXJlY29cQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Documents/GitHub/casa-de-repouso-POO/Views/Endereco/Update.cshtml]
+[C:/Users/Administrador/Documents/GitHub/casa-de-repouso-POO/Views/Endereco/Update.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcRW5kZXJlY29cVXBkYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Documents/GitHub/casa-de-repouso-POO/Views/Idoso/Create.cshtml]
+[C:/Users/Administrador/Documents/GitHub/casa-de-repouso-POO/Views/Idoso/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWRvc29cQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Documents/GitHub/casa-de-repouso-POO/Views/Idoso/Read.cshtml]
+[C:/Users/Administrador/Documents/GitHub/casa-de-repouso-POO/Views/Idoso/Read.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWRvc29cUmVhZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Documents/GitHub/casa-de-repouso-POO/Views/Idoso/Update.cshtml]
+[C:/Users/Administrador/Documents/GitHub/casa-de-repouso-POO/Views/Idoso/Update.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSWRvc29cVXBkYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Documents/GitHub/casa-de-repouso-POO/Views/Medicacao/Create.cshtml]
+[C:/Users/Administrador/Documents/GitHub/casa-de-repouso-POO/Views/Medicacao/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVkaWNhY2FvXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Documents/GitHub/casa-de-repouso-POO/Views/Medicacao/Read.cshtml]
+[C:/Users/Administrador/Documents/GitHub/casa-de-repouso-POO/Views/Medicacao/Read.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVkaWNhY2FvXFJlYWQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Documents/GitHub/casa-de-repouso-POO/Views/Medicacao/Update.cshtml]
+[C:/Users/Administrador/Documents/GitHub/casa-de-repouso-POO/Views/Medicacao/Update.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcTWVkaWNhY2FvXFVwZGF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Documents/GitHub/casa-de-repouso-POO/Views/Relatorio/Create.cshtml]
+[C:/Users/Administrador/Documents/GitHub/casa-de-repouso-POO/Views/Relatorio/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVsYXRvcmlvXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Documents/GitHub/casa-de-repouso-POO/Views/Relatorio/Read.cshtml]
+[C:/Users/Administrador/Documents/GitHub/casa-de-repouso-POO/Views/Relatorio/Read.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVsYXRvcmlvXFJlYWQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Documents/GitHub/casa-de-repouso-POO/Views/Relatorio/Update.cshtml]
+[C:/Users/Administrador/Documents/GitHub/casa-de-repouso-POO/Views/Relatorio/Update.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVsYXRvcmlvXFVwZGF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Documents/GitHub/casa-de-repouso-POO/Views/Responsavel/Create.cshtml]
+[C:/Users/Administrador/Documents/GitHub/casa-de-repouso-POO/Views/Responsavel/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzcG9uc2F2ZWxcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Documents/GitHub/casa-de-repouso-POO/Views/Responsavel/Read.cshtml]
+[C:/Users/Administrador/Documents/GitHub/casa-de-repouso-POO/Views/Responsavel/Read.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzcG9uc2F2ZWxcUmVhZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Documents/GitHub/casa-de-repouso-POO/Views/Responsavel/Update.cshtml]
+[C:/Users/Administrador/Documents/GitHub/casa-de-repouso-POO/Views/Responsavel/Update.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcUmVzcG9uc2F2ZWxcVXBkYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Documents/GitHub/casa-de-repouso-POO/Views/Situacao/Create.cshtml]
+[C:/Users/Administrador/Documents/GitHub/casa-de-repouso-POO/Views/Situacao/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2l0dWFjYW9cQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Documents/GitHub/casa-de-repouso-POO/Views/Situacao/Read.cshtml]
+[C:/Users/Administrador/Documents/GitHub/casa-de-repouso-POO/Views/Situacao/Read.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2l0dWFjYW9cUmVhZC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Admin/Documents/GitHub/casa-de-repouso-POO/Views/Situacao/Update.cshtml]
+[C:/Users/Administrador/Documents/GitHub/casa-de-repouso-POO/Views/Situacao/Update.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2l0dWFjYW9cVXBkYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 

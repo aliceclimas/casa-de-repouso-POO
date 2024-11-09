@@ -641,3 +641,10 @@ C:\Users\Admin\Documents\GitHub\casa-de-repouso-POO\obj\Debug\net8.0\CasaRepouso
 C:\Users\Admin\Documents\GitHub\casa-de-repouso-POO\obj\Debug\net8.0\CasaRepousoWeb.genruntimeconfig.cache
 C:\Users\Admin\Documents\GitHub\casa-de-repouso-POO\obj\Debug\net8.0\ref\CasaRepousoWeb.dll
 C:\Users\Admin\Documents\GitHub\casa-de-repouso-POO\bin\Debug\net8.0\CasaRepousoWeb.staticwebassets.runtime.json
+C:\Users\Administrador\Documents\GitHub\casa-de-repouso-POO\bin\Debug\net8.0\CasaRepousoWeb.staticwebassets.runtime.json
+C:\Users\Administrador\Documents\GitHub\casa-de-repouso-POO\bin\Debug\net8.0\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\Administrador\Documents\GitHub\casa-de-repouso-POO\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\Administrador\Documents\GitHub\casa-de-repouso-POO\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Administrador\Documents\GitHub\casa-de-repouso-POO\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
+C:\Users\Administrador\Documents\GitHub\casa-de-repouso-POO\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Administrador\Documents\GitHub\casa-de-repouso-POO\bin\Debug\net8.0\Microsoft.Extensions.Options.dll
