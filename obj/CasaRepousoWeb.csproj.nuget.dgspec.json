@@ -1,37 +1,20 @@
 {
   "format": 1,
   "restore": {
-<<<<<<< HEAD
-    "c:\\Users\\Administrador\\Documents\\GitHub\\casa-de-repouso-POO\\CasaRepousoWeb.csproj": {}
+    "C:\\Users\\Administrador\\Documents\\GitHub\\casa-de-repouso-POO\\CasaRepousoWeb.csproj": {}
   },
   "projects": {
-    "c:\\Users\\Administrador\\Documents\\GitHub\\casa-de-repouso-POO\\CasaRepousoWeb.csproj": {
+    "C:\\Users\\Administrador\\Documents\\GitHub\\casa-de-repouso-POO\\CasaRepousoWeb.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\Administrador\\Documents\\GitHub\\casa-de-repouso-POO\\CasaRepousoWeb.csproj",
+        "projectUniqueName": "C:\\Users\\Administrador\\Documents\\GitHub\\casa-de-repouso-POO\\CasaRepousoWeb.csproj",
         "projectName": "CasaRepousoWeb",
-        "projectPath": "c:\\Users\\Administrador\\Documents\\GitHub\\casa-de-repouso-POO\\CasaRepousoWeb.csproj",
+        "projectPath": "C:\\Users\\Administrador\\Documents\\GitHub\\casa-de-repouso-POO\\CasaRepousoWeb.csproj",
         "packagesPath": "C:\\Users\\Administrador\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\Administrador\\Documents\\GitHub\\casa-de-repouso-POO\\obj\\",
+        "outputPath": "C:\\Users\\Administrador\\Documents\\GitHub\\casa-de-repouso-POO\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Administrador\\AppData\\Roaming\\NuGet\\NuGet.Config"
-=======
-    "C:\\Users\\Admin\\Documents\\GitHub\\casa-de-repouso-POO\\CasaRepousoWeb.csproj": {}
-  },
-  "projects": {
-    "C:\\Users\\Admin\\Documents\\GitHub\\casa-de-repouso-POO\\CasaRepousoWeb.csproj": {
-      "version": "1.0.0",
-      "restore": {
-        "projectUniqueName": "C:\\Users\\Admin\\Documents\\GitHub\\casa-de-repouso-POO\\CasaRepousoWeb.csproj",
-        "projectName": "CasaRepousoWeb",
-        "projectPath": "C:\\Users\\Admin\\Documents\\GitHub\\casa-de-repouso-POO\\CasaRepousoWeb.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Admin\\Documents\\GitHub\\casa-de-repouso-POO\\obj\\",
-        "projectStyle": "PackageReference",
-        "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config"
->>>>>>> ana-tela-login
         ],
         "originalTargetFrameworks": [
           "net8.0"
@@ -49,6 +32,11 @@
           "warnAsError": [
             "NU1605"
           ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
         }
       },
       "frameworks": {
@@ -59,7 +47,7 @@
               "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.8, )"
+              "version": "[8.0.10, )"
             },
             "Microsoft.EntityFrameworkCore.InMemory": {
               "target": "Package",
@@ -72,6 +60,12 @@
             "Microsoft.EntityFrameworkCore.Sqlite": {
               "target": "Package",
               "version": "[8.0.8, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[8.0.10, )"
             }
           },
           "imports": [
@@ -93,11 +87,7 @@
               "privateAssets": "all"
             }
           },
-<<<<<<< HEAD
           "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.401/PortableRuntimeIdentifierGraph.json"
-=======
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.101/PortableRuntimeIdentifierGraph.json"
->>>>>>> ana-tela-login
         }
       }
     }

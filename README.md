@@ -28,8 +28,3 @@ Serene permite o registro e a visualização de:
 
 dotnet ef migrations add InitialCreate
 dotnet ef database update
-
-
-
-
-
