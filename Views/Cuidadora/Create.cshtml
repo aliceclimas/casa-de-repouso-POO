@@ -40,73 +40,72 @@
             font-size: 1em;
             width: 80%;
             margin: 0;
-            font-weight: ;
         }
     </style>
 </head>
 <body>
-    <div class="container mt-5">
+    <section class="container mt-5">
         <h2>Cadastrar Usuário</h2>
         <form action="/cuidadora/Create" method="post">
             @Html.AntiForgeryToken()
 
-            <div class="form-group row">
-                <div class="col-md-6">
+            <section class="form-group row">
+                <section class="col-md-6">
                     <label for="nome">Nome</label>
                     <input type="text" class="form-control" id="nome" name="Nome" required>
                     @Html.ValidationMessageFor(model => model.Nome, "", new { @class = "text-danger" })
-                </div>
-                <div class="col-md-6">
+                </section>
+                <section class="col-md-6">
                     <label for="sobrenome">Sobrenome</label>
                     <input type="text" class="form-control" id="sobrenome"name="Sobrenome" required>
                     @Html.ValidationMessageFor(model => model.Sobrenome, "", new { @class = "text-danger" })
-                </div>
-            </div>
+                </section>
+            </section>
 
-            <div class="form-group row">
-                <div class="col-md-6">
+            <section class="form-group row">
+                <section class="col-md-6">
                     <label for="cpf">CPF</label>
                     <input type="text" class="form-control" id="cpf" placeholder="000.000.000-00" name="CPF" required pattern="\d{3}\.\d{3}\.\d{3}-\d{2}" title="Formato: 000.000.000-00">
                     @Html.ValidationMessageFor(model => model.CPF, "", new { @class = "text-danger" })
-                </div>
-                <div class="col-md-6">
+                </section>
+                <section class="col-md-6">
                     <label for="telefone">Telefone</label>
                     <input type="text" class="form-control" id="telefone" placeholder="(00) 00000-0000" name="Telefone" required pattern="\(\d{2}\) \d{5}-\d{4}" title="Formato: (00) 00000-0000">
                     @Html.ValidationMessageFor(model => model.Telefone, "", new { @class = "text-danger" })
-                </div>
-            </div>
+                </section>
+            </section>
 
-            <div class="form-group row">
-                <div class="col-md-6">
+            <section class="form-group row">
+                <section class="col-md-6">
                     <label for="horarioEntrada">Horário de Entrada</label>
                     <input type="time" class="form-control" id="horarioEntrada" name="HorarioEntrada">
                     @Html.ValidationMessageFor(model => model.HorarioEntrada, "", new { @class = "text-danger" })
-                </div>
-                <div class="col-md-6">
+                </section>
+                <section class="col-md-6">
                     <label for="horarioSaida">Horário de Saída</label>
                     <input type="time" class="form-control" id="horarioSaida" name="HorarioSaida">
                     @Html.ValidationMessageFor(model => model.HorarioSaida, "", new { @class = "text-danger" })
-                </div>
-            </div>
+                </section>
+            </section>
 
-            <div class="form-group">
+            <section class="form-group">
                 <label for="email">Email</label>
                 <input type="email" class="form-control" id="email" placeholder="email@exemplo.com" name="Email" required>
                 @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
-            </div>
+            </section>
 
-            <div class="form-group">
+            <section class="form-group">
                 <label for="Senha">Senha</label>
-                <div class="input-group">
+                <section class="input-group">
                     <input type="password" class="form-control" id="Senha" name="Senha" required style="border-radius: 0.25em; height: 37px">
                     <button id="eye-button" class="btn" type="button" onclick="togglePasswordVisibility()" style="position: absolute; right: 0; z-index: 999; height: 37px">
                     <i class="fas fa-eye" id="togglePasswordIcon"></i>
                     </button>
-                </div>
+                </section>
                 @Html.ValidationMessageFor(model => model.Senha, "", new { @class = "text-danger" })
-            </div>
+            </section>
 
-            <div class="form-group">
+            <section class="form-group">
                 <label for="ala">Ala</label>
                 <select class="form-control" id="ala" name="AlaId">
                     <option value="">Selecionar ala</option>
@@ -123,14 +122,14 @@
                     }
                 </select>
                 @Html.ValidationMessageFor(model => model.AlaId, "", new { @class = "text-danger" })
-            </div>
+            </section>
 
-            <div class="d-flex justify-content-md-end" style="margin-top: 20px">
+            <section class="d-flex justify-content-md-end" style="margin-top: 20px">
                 <a href="/idoso/read" class="btn btn-outline-secondary mx-1">Voltar</a>
                 <button type="submit" class="btn btn-primary">Cadastrar</button>   
-            </div>
+            </section>
         </form>
-    </div>
+    </section>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
