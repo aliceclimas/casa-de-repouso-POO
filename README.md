@@ -18,13 +18,14 @@ Serene permite o registro e a visualização de:
 - <b>Medicações:</b> Controla o histórico de medicações dos idosos, facilitando o trabalho das cuidadoras.
 - <b>Relatórios Diários:</b> Registra eventos e observações diárias para que a equipe esteja sempre informada sobre o andamento e as necessidades de cada idoso.
 
-## 📄 Tecnologias Usadas
+## 🌐 Tecnologias Usadas
 - C#
 - Razor
 - SQL
 - Framework MVC
 - Bootstrap
 
-
-dotnet ef migrations add InitialCreate
-dotnet ef database update
+## 📝 Melhorias Sugeridas
+- Garantia da segurança das informações inseridas com camadas adicionais de proteção
+- Implementação de funcionalidades que permitam o compartilhamento automático de relatórios
+- Melhoria na experiência do usuário (UX)
